@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>उमा टेक्निकल कॉलेज - फोटो गैलरी</title>
     <style>
+        /* बेसिक रीसेट और ग्लोबल स्टाइल */
         * {
             margin: 0;
             padding: 0;
@@ -13,8 +14,10 @@
         }
         body {
             background-color: #f8f9fa;
+            color: #333;
         }
-        /* हेडर स्टाइल */
+
+        /* हेडर (Header) स्टाइल */
         .header {
             background-color: #ffffff;
             padding: 15px 20px;
@@ -40,6 +43,7 @@
         .logo-text h1 {
             font-size: 18px;
             color: #003366;
+            line-height: 1.2;
         }
         .logo-text p {
             font-size: 11px;
@@ -57,6 +61,7 @@
         .nav-links a {
             text-decoration: none;
             color: #333;
+            transition: color 0.2s;
         }
         .nav-links a:hover {
             color: #0056b3;
@@ -71,7 +76,7 @@
             font-weight: bold;
         }
 
-        /* गैलरी ग्रिड स्टाइल */
+        /* मुख्य गैलरी (Gallery) ग्रिड */
         .gallery-container {
             max-width: 1200px;
             margin: 30px auto;
@@ -82,13 +87,17 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
+
+        /* रिस्पॉन्सिव लेआउट (मोबाइल और टैबलेट के लिए) */
         @media (max-width: 992px) {
             .gallery-grid { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 768px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; }
+            .nav-links { display: none; } /* मोबाइल पर मेनू छुप जाएगा */
         }
+
+        /* फोटो कार्ड डिज़ाइन */
         .gallery-item {
             background: white;
             border-radius: 8px;
@@ -96,10 +105,11 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             text-align: center;
             border: 1px solid #e9ecef;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .gallery-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
         .gallery-item img {
             width: 100%;
@@ -112,21 +122,21 @@
             font-size: 12px;
             font-weight: 600;
             color: #333;
-            background: #fff;
+            background: #ffffff;
+            border-top: 1px solid #f1f3f5;
         }
 
-        /* फुटर स्टाइल */
+        /* फुटर (Footer) स्टाइल */
         .footer {
             background: #ffffff;
             padding: 30px 20px;
             margin-top: 50px;
             border-top: 1px solid #e9ecef;
             text-align: left;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
         }
         .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -147,13 +157,14 @@
         .footer .address-text {
             margin-top: 5px;
             font-weight: 600;
-            color: #444;
+            color: #111;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <!-- हेडर सेक्शन -->
+    <!-- हेडर सेक्शन (वेबसाइट का ऊपरी भाग) -->
     <header class="header">
         <div class="logo-section">
             <div class="logo-icon">उ</div>
@@ -167,13 +178,13 @@
             <li><a href="#" style="color: #0056b3;">फोटो गैलरी</a></li>
             <li><a href="#">स्पेशल ऑफर</a></li>
             <li><a href="#">प्रमाण पत्र</a></li>
-            <!-- मैप लोकेशन लिंक -->
+            <!-- गूगल मैप्स का सटीक लोकेशन लिंक -->
             <li><a href="https://maps.app.goo.gl/oPAwrSSBTWZ8rLu37" target="_blank">लोकेशन</a></li>
         </ul>
         <a href="tel:" class="call-btn">📞 अभी बात करें</a>
     </header>
 
-    <!-- मुख्य गैलरी सेक्शन -->
+    <!-- मुख्य गैलरी सेक्शन (सभी फोटो यहाँ लोड होंगी) -->
     <main class="gallery-container">
         <div class="gallery-grid">
             
@@ -312,12 +323,13 @@
         </div>
     </main>
 
-    <!-- फुटर सेक्शन (नया एड्रेस यहाँ जोड़ दिया गया है) -->
+    <!-- फुटर सेक्शन (वेबसाइट का निचला भाग - नया एड्रेस और डिटेल यहाँ है) -->
     <footer class="footer">
         <div class="footer-content">
             <h3>करियर ओरिएंटेड कोर्सेज</h3>
             <h2>वही सीखें जो मार्केट की डिमांड है</h2>
             <p>हमारे सभी कोर्सेज 2026 के लेटेस्ट टूल्स और नई टेक्नोलॉजी (Inverter Tech & Smart Controls) के आधार पर डिजाइन किए गए हैं।</p>
+            <!-- आपका नया सटीक पता -->
             <p class="address-text">📍 पता: बेतियाहाता, गोरखपुर, उत्तर प्रदेश 273001 (निकट श्रीमती द्रौपदी देवी त्रिपाठी डिग्री कॉलेज)</p>
         </div>
     </footer>
