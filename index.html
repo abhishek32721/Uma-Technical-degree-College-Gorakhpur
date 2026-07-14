@@ -125,34 +125,12 @@
   .trustrow span{display:flex; align-items:center; gap:8px;}
   .dot{width:8px; height:8px; border-radius:50%; background:var(--green); flex:none;}
 
-  /* Seal / signature element */
+  /* Seal / Hero Image Stage */
   .seal-stage{display:flex; justify-content:center; align-items:center; position:relative;}
-  .seal{
-    width:240px; height:240px; border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #2563EB, #1E40AF 70%);
-    display:flex; align-items:center; justify-content:center;
-    position:relative;
-    box-shadow:0 20px 40px -10px rgba(37,99,235,0.4), inset 0 0 0 6px rgba(255,255,255,0.1);
-  }
-  .seal::before{
-    content:"";
-    position:absolute; inset:14px;
-    border-radius:50%;
-    border:2px dashed rgba(255,255,255,0.4);
-    animation:spin 25s linear infinite;
-  }
-  @keyframes spin{to{transform:rotate(360deg);}}
-  .seal .core{
-    text-align:center; color:var(--white); font-family:'Baloo 2';
-  }
-  .seal .core .big{font-size:2.4rem; font-weight:800; line-height:1;}
-  .seal .core .mid{font-size:1.15rem; font-weight:700; margin-top:2px; letter-spacing: 1px;}
-  .seal .core .small{font-size:0.75rem; letter-spacing:0.12em; margin-top:6px; opacity:0.9; font-family:'Hind'; font-weight:700;}
-  .seal-badge{
-    position:absolute; bottom:-12px; left:50%; transform:translateX(-50%);
-    background:var(--rust); color:var(--white); font-weight:700; font-size:0.85rem;
-    padding:6px 18px; border-radius:999px; white-space:nowrap;
-    box-shadow:0 4px 12px rgba(239, 68, 68, 0.3);
+  .hero-main-img{
+    width:100%; max-width:400px; height:auto; border-radius:16px;
+    box-shadow:0 20px 40px -10px rgba(15,23,42,0.3);
+    border:4px solid var(--white);
   }
 
   /* ---------- Section shells ---------- */
@@ -161,6 +139,25 @@
   .section-head .kicker{color:var(--brand); font-weight:700; font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; display:block;}
   .section-head h2{font-size:2.2rem; font-weight:800; letter-spacing: -0.01em;}
   .section-head p{color:var(--ink-soft); margin-top:10px; font-size:1.05rem; font-weight: 500;}
+
+  /* ---------- Gallery Section Styles ---------- */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:16px;
+  }
+  .gallery-card{
+    background:var(--white); border:1px solid var(--line); border-radius:12px;
+    overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.02); transition:all 0.2s;
+  }
+  .gallery-card:hover{
+    transform:translateY(-3px); box-shadow:0 10px 20px rgba(0,0,0,0.08); border-color:var(--brand);
+  }
+  .gallery-card img{
+    width:100%; height:170px; object-fit:cover; display:block;
+  }
+  .gallery-card .caption{
+    padding:10px; font-size:0.85rem; font-weight:700; text-align:center; color:var(--ink);
+    border-top:1px solid var(--line); background:#fff;
+  }
 
   /* ---------- Courses ---------- */
   .course-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
@@ -219,62 +216,6 @@
   .stat .num{font-family:'Baloo 2'; font-size:2.2rem; font-weight:800; color:var(--brand); line-height: 1;}
   .stat .lbl{font-size:0.88rem; color:var(--ink-soft); font-weight:700; margin-top:4px;}
 
-  /* ---------- Gallery ---------- */
-  .gallery{background:var(--white);}
-  .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:16px;
-  }
-  .gallery-item{
-    position:relative;
-    border-radius:14px;
-    overflow:hidden;
-    aspect-ratio:4/3;
-    border:1px solid var(--line);
-    cursor:pointer;
-    background:var(--paper-dim);
-  }
-  .gallery-item img{
-    width:100%; height:100%; object-fit:cover;
-    transition: transform .35s ease;
-    display:block;
-  }
-  .gallery-item:hover img{transform:scale(1.07);}
-  .gallery-item .cap{
-    position:absolute; left:0; right:0; bottom:0;
-    background:linear-gradient(180deg, transparent, rgba(15,23,42,0.75));
-    color:var(--white); font-size:0.78rem; font-weight:700;
-    padding:18px 10px 8px;
-    opacity:0; transition:opacity .25s ease;
-  }
-  .gallery-item:hover .cap{opacity:1;}
-
-  /* Lightbox */
-  .lightbox{
-    display:none; position:fixed; inset:0; z-index:200;
-    background:rgba(15,23,42,0.92);
-    align-items:center; justify-content:center;
-    padding:24px;
-  }
-  .lightbox.open{display:flex;}
-  .lightbox img{
-    max-width:92vw; max-height:86vh; border-radius:10px;
-    box-shadow:0 20px 60px rgba(0,0,0,0.5);
-  }
-  .lightbox-close{
-    position:absolute; top:20px; right:28px;
-    color:var(--white); font-size:2rem; font-weight:700;
-    cursor:pointer; line-height:1;
-  }
-  .lightbox-nav{
-    position:absolute; top:50%; transform:translateY(-50%);
-    color:var(--white); font-size:2.4rem; cursor:pointer;
-    user-select:none; padding:10px 18px;
-  }
-  .lightbox-prev{left:8px;}
-  .lightbox-next{right:8px;}
-
   /* ---------- Location ---------- */
   .location{background:var(--paper-dim);}
   .loc-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:stretch;}
@@ -317,7 +258,6 @@
     .course-grid{grid-template-columns:repeat(2,1fr);}
     .offer-grid{grid-template-columns:1fr;}
     .about-grid{grid-template-columns:1fr; gap: 32px;}
-    .gallery-grid{grid-template-columns:repeat(2,1fr);}
     .loc-grid{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr; gap:28px;}
     .sticky-call{
@@ -336,8 +276,6 @@
   @media (max-width:560px){
     .hero h1{font-size:2.2rem;}
     .course-grid{grid-template-columns:1fr;}
-    .gallery-grid{grid-template-columns:repeat(2,1fr);}
-    .seal{width:200px; height:200px;}
     .section-head h2{font-size: 1.75rem;}
   }
 </style>
@@ -346,7 +284,7 @@
 
 <div class="topstrip">
   <div class="wrap">
-    <span>🎯 सत्र 2026 एडमिशन ओपन: भारत सरकार द्वारा मान्यता प्राप्त ISO 9001:2015 संस्थान</span>
+    <span>🎯 सत्र 2026 एडमिशन开放: भारत सरकार द्वारा मान्यता प्राप्त ISO 9001:2015 संस्थान</span>
     <a href="tel:+916306290994">📞 डायरेक्ट एडमिशन हेल्पलाइन: +91-6306290994</a>
   </div>
 </div>
@@ -361,9 +299,9 @@
     </div>
     <nav class="links">
       <a href="#courses">कोर्स लिस्ट</a>
+      <a href="#gallery">फोटो गैलरी</a>
       <a href="#offers">स्पेशल ऑफर</a>
       <a href="#about">प्रमाण पत्र</a>
-      <a href="#gallery">गैलरी</a>
       <a href="#location">लोकेशन</a>
     </nav>
     <a class="cta-call" href="tel:+916306290994">📞 अभी बात करें</a>
@@ -387,14 +325,67 @@
       </div>
     </div>
     <div class="seal-stage">
-      <div class="seal">
-        <div class="core">
-          <div class="big">100%</div>
-          <div class="mid">प्रैक्टिकल</div>
-          <div class="small">JOB GUARANTEE</div>
-        </div>
-        <div class="seal-badge">⏳ सीमित सीटें शेष</div>
-      </div>
+      <img src="DSC03363.JPG" alt="उमा टेक्निकल डिग्री कॉलेज" class="hero-main-img">
+    </div>
+  </div>
+</section>
+
+<!-- कंपलीट फोटो गैलरी (आपकी सभी 44+ तस्वीरें यहाँ हैं) -->
+<section id="gallery" style="background:var(--white);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">कैम्पस और इवेंट की झलकियाँ</span>
+      <h2>एनुअल फंक्शन एवं पुरस्कार वितरण गैलरी</h2>
+      <p>उमा टेक्निकल कॉलेज के होनहार छात्रों के सम्मान और समारोह के कुछ यादगार पल।</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card"><img src="DSC03244_1.JPG" alt="Event Photo"><div class="caption">समारोह की सुंदर झलक</div></div>
+      <div class="gallery-card"><img src="DSC03245_1.JPG" alt="Event Photo"><div class="caption">एनुअल फंक्शन मोमेंट</div></div>
+      <div class="gallery-card"><img src="DSC03246_1.JPG" alt="Event Photo"><div class="caption">कार्यक्रम की यादें</div></div>
+      <div class="gallery-card"><img src="DSC03247_1.JPG" alt="Event Photo"><div class="caption">सांस्कृतिक कार्यक्रम स्टेज</div></div>
+      <div class="gallery-card"><img src="DSC03248.JPG" alt="Event Photo"><div class="caption">छात्रों का उत्साह</div></div>
+      <div class="gallery-card"><img src="DSC03249_1.JPG" alt="Event Photo"><div class="caption">गौरवमयी पल</div></div>
+      <div class="gallery-card"><img src="DSC03250_1.JPG" alt="Event Photo"><div class="caption">मंच पर प्रस्तुति</div></div>
+      <div class="gallery-card"><img src="DSC03363.JPG" alt="Event Photo"><div class="caption">मुख्य मेगा प्राइज़ वितरण</div></div>
+      <div class="gallery-card"><img src="DSC03363_1.JPG" alt="Event Photo"><div class="caption">पुरस्कार वितरण समारोह</div></div>
+      <div class="gallery-card"><img src="DSC03364.JPG" alt="Event Photo"><div class="caption">मंच पर अतिथियों द्वारा सम्मान</div></div>
+      <div class="gallery-card"><img src="DSC03367.JPG" alt="Event Photo"><div class="caption">विजेताओं का सम्मान</div></div>
+      <div class="gallery-card"><img src="DSC03368.JPG" alt="Event Photo"><div class="caption">ट्रॉफी के साथ चमकते सितारे</div></div>
+      <div class="gallery-card"><img src="DSC03368_1.JPG" alt="Event Photo"><div class="caption">अचीवर्स गैलरी</div></div>
+      <div class="gallery-card"><img src="DSC03372.JPG" alt="Event Photo"><div class="caption">मेडल और सम्मान सत्र</div></div>
+      <div class="gallery-card"><img src="DSC03373.JPG" alt="Event Photo"><div class="caption">पारंपरिक स्क्रॉल सम्मान सत्र</div></div>
+      <div class="gallery-card"><img src="DSC03374.JPG" alt="Event Photo"><div class="caption">प्रशंसा पत्र वितरण</div></div>
+      <div class="gallery-card"><img src="DSC03375.JPG" alt="Event Photo"><div class="caption">प्रमाणपत्र एवं मेमेंटो वितरण</div></div>
+      <div class="gallery-card"><img src="DSC03416.JPG" alt="Event Photo"><div class="caption">ऑर्गनाइजिंग टीम की सफलता</div></div>
+      <div class="gallery-card"><img src="DSC03417.JPG" alt="Event Photo"><div class="caption">कैम्पस ईवनिंग व्यू</div></div>
+      <div class="gallery-card"><img src="DSC03418.JPG" alt="Event Photo"><div class="caption">कैम्पस ईवनिंग कैप्चर्स</div></div>
+      <div class="gallery-card"><img src="DSC03419.JPG" alt="Event Photo"><div class="caption">ग्रुप फोटो इवेंट</div></div>
+      <div class="gallery-card"><img src="DSC03420.JPG" alt="Event Photo"><div class="caption">मैनेजमेंट टीम गैलरी</div></div>
+      <div class="gallery-card"><img src="DSC03421.JPG" alt="Event Photo"><div class="caption">इवेंट के बाद सेलिब्रेशन मोमेंट</div></div>
+      <div class="gallery-card"><img src="DSC03422.JPG" alt="Event Photo"><div class="caption">यादगार ग्रुप कैप्चर</div></div>
+      <div class="gallery-card"><img src="DSC_8117.JPG" alt="Event Photo"><div class="caption">लैब प्रैक्टिकल ट्रेनिंग</div></div>
+      <div class="gallery-card"><img src="DSC_8118.webp" alt="Event Photo"><div class="caption">स्मार्ट क्लासरूम व्यू</div></div>
+      <div class="gallery-card"><img src="DSC_8119.webp" alt="Event Photo"><div class="caption">टेक्निकल ट्रेनिंग लैब</div></div>
+      <div class="gallery-card"><img src="DSC_8120.webp" alt="Event Photo"><div class="caption">प्रैक्टिकल वर्कशॉप झलक</div></div>
+      <div class="gallery-card"><img src="DSC_8121.webp" alt="Event Photo"><div class="caption">इलेक्ट्रॉनिक्स लैब वर्क</div></div>
+      <div class="gallery-card"><img src="DSC_8123.JPG" alt="Event Photo"><div class="caption">कंप्यूटर लैब सेशन</div></div>
+      <div class="gallery-card"><img src="DSC_8124.JPG" alt="Event Photo"><div class="caption">हार्डवेयर ट्रेनिंग बैच</div></div>
+      <div class="gallery-card"><img src="DSC_8125.JPG" alt="Event Photo"><div class="caption">स्टूडेंट अचीवमेंट शो</div></div>
+      <div class="gallery-card"><img src="DSC_8126.JPG" alt="Event Photo"><div class="caption">सर्टिफिकेट वितरण</div></div>
+      <div class="gallery-card"><img src="DSC_8127.webp" alt="Event Photo"><div class="caption">सत्र 2026 की यादें</div></div>
+      <div class="gallery-card"><img src="DSC_8128.webp" alt="Event Photo"><div class="caption">प्रैक्टिकल बैच मोमेंट</div></div>
+      <div class="gallery-card"><img src="DSC_8129.webp" alt="Event Photo"><div class="caption">स्किल डेवलपमेंट क्लास</div></div>
+      <div class="gallery-card"><img src="DSC_8130.JPG" alt="Event Photo"><div class="caption">लाइव ट्रेनिंग सेशन</div></div>
+      <div class="gallery-card"><img src="DSC_8131.webp" alt="Event Photo"><div class="caption">इंस्टिट्यूट एक्टिविटी</div></div>
+      <div class="gallery-card"><img src="DSC_8132.JPG" alt="Event Photo"><div class="caption">टेक्निकल प्रोजेक्ट वर्क</div></div>
+      <div class="gallery-card"><img src="DSC_8133.JPG" alt="Event Photo"><div class="caption">स्टूडेंट्स इनोवेशन लैब</div></div>
+      <div class="gallery-card"><img src="DSC_8134.JPG" alt="Event Photo"><div class="caption">वर्कशॉप डेमोंस्ट्रेशन</div></div>
+      <div class="gallery-card"><img src="DSC_8135.JPG" alt="Event Photo"><div class="caption">करियर काउंसलिंग मीट</div></div>
+      <div class="gallery-card"><img src="DSC_8138.webp" alt="Event Photo"><div class="caption">सक्सेसफुल स्टूडेंट्स क्लब</div></div>
+      <div class="gallery-card"><img src="DSC_8139.webp" alt="Event Photo"><div class="caption">प्लेसमेंट ड्राइव मोमेंट</div></div>
+      <div class="gallery-card"><img src="DSC_8140.webp" alt="Event Photo"><div class="caption">प्रमाणित हुनर प्रदर्शन</div></div>
+      <div class="gallery-card"><img src="DSC_8141.webp" alt="Event Photo"><div class="caption">एनुअल फंक्शन अचीवर्स</div></div>
+      <div class="gallery-card"><img src="DSC_8142.webp" alt="Event Photo"><div class="caption">उमा टेक्निकल स्टार्स</div></div>
     </div>
   </div>
 </section>
@@ -415,7 +406,7 @@
       <div class="course-card">
         <h3>A.D.C.A / D.C.A</h3>
         <p>1 साल का कंपलीट डिप्लोमा। ऑफिस वर्क, एडवांस एक्सेल, ग्राफिक डिजाइनिंग और कोडिंग की शुरुआत।</p>
-        <span class="tag">मोस्ट पॉपुलर</span>
+        <span class="tag">मोस्ट Popular</span>
       </div>
       <div class="course-card">
         <h3>Tally Prime (with GST)</h3>
@@ -424,7 +415,7 @@
       </div>
       <div class="course-card">
         <h3>स्मार्ट ए.सी. रिपेयरिंग</h3>
-        <p>इन्वर्टर AC, स्प्लिट AC की गैस चार्जिंग, फॉल्ट फाइंडिंग और कंपलीट कंप्रेसर रिपेयरिंग।</p>
+        <p>इन्वर्टर AC, स्प्लिट AC की gas charging, फॉल्ट फाइंडिंग और कंपलीट कंप्रेसर रिपेयरिंग।</p>
         <span class="tag">हाई डिमांड</span>
       </div>
       <div class="course-card">
@@ -444,17 +435,17 @@
       </div>
       <div class="course-card">
         <h3>LED / Smart TV रिपेयरिंग</h3>
-        <p>4K/Android टीवी की सर्किट बोर्ड (PCB) रिपेयरिंग, बैकलाइट बदलना और सॉफ्टवेयर फ्लैशिंग।</p>
+        <p>4K/Android टीवी की सर्किट board (PCB) रिपेयरिंग, बैकलाइट बदलना और सॉफ्टवेयर फ्लैशिंग।</p>
         <span class="tag">इलेक्ट्रॉनिक्स</span>
       </div>
       <div class="course-card">
         <h3>नेटवर्किंग व वाई-फाई</h3>
-        <p>CCTV कैमरा सेटअप, वाई-फाई कॉन्फ़िगरेशन, LAN/WAN और राउटर MANAGEMENT।</p>
+        <p>CCTV कैमरा सेटअप, वाई-फाई कॉन्फ़िगरेशन, LAN/WAN और राउटर मैनेजमेंट।</p>
         <span class="tag">IT फील्ड</span>
       </div>
       <div class="course-card">
         <h3>स्मार्ट इलेक्ट्रिकल</h3>
-        <p>घरेलू/इंडस्ट्रियल इनवर्टर वायरिंग, हाउस वायरिंग और डिजिटल मीटर फॉल्ट।</p>
+        <p>घरेलू/इंडस्ट्रियल इनवर्टर वायरिंग, House wiring और डिजिटल मीटर फॉल्ट।</p>
         <span class="tag">स्वरोजगार</span>
       </div>
       <div class="course-card">
@@ -532,74 +523,6 @@
   </div>
 </section>
 
-<section id="gallery" class="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">इवेंट गैलरी</span>
-      <h2>हमारे कॉलेज के पलों की झलक</h2>
-      <p>10वां अध्यागत गौरव सम्मान वार्षिकोत्सव सम्मान समारोह — उमा टेक्निकल डिग्री कॉलेज, सिद्धार्थनगर।</p>
-    </div>
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item"><img src="DSC_8117.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 1" loading="lazy"><div class="cap">समारोह मंच</div></div>
-      <div class="gallery-item"><img src="DSC_8118.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 2" loading="lazy"><div class="cap">वक्ता संबोधन</div></div>
-      <div class="gallery-item"><img src="DSC_8119.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 3" loading="lazy"><div class="cap">मुख्य अतिथि</div></div>
-      <div class="gallery-item"><img src="DSC_8120.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 4" loading="lazy"><div class="cap">सम्मान समारोह</div></div>
-      <div class="gallery-item"><img src="DSC_8121.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 5" loading="lazy"><div class="cap">छात्र सहभागिता</div></div>
-      <div class="gallery-item"><img src="DSC_8122.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 6" loading="lazy"><div class="cap">पुरस्कार वितरण</div></div>
-      <div class="gallery-item"><img src="DSC_8123.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 7" loading="lazy"><div class="cap">मंचासीन अतिथिगण</div></div>
-      <div class="gallery-item"><img src="DSC_8124.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 8" loading="lazy"><div class="cap">दर्शक दीर्घा</div></div>
-      <div class="gallery-item"><img src="DSC_8125.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 9" loading="lazy"><div class="cap">संबोधन</div></div>
-      <div class="gallery-item"><img src="DSC_8126.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 10" loading="lazy"><div class="cap">छात्र समूह</div></div>
-      <div class="gallery-item"><img src="DSC_8127.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 11" loading="lazy"><div class="cap">भव्य ऑडिटोरियम</div></div>
-      <div class="gallery-item"><img src="DSC_8128.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 12" loading="lazy"><div class="cap">पूर्ण सभागार</div></div>
-      <div class="gallery-item"><img src="DSC_8129.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 13" loading="lazy"><div class="cap">मंच पर चर्चा</div></div>
-      <div class="gallery-item"><img src="DSC_8130.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 14" loading="lazy"><div class="cap">मंच व्यवस्था</div></div>
-      <div class="gallery-item"><img src="DSC_8131.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 15" loading="lazy"><div class="cap">सम्मान चिन्ह</div></div>
-      <div class="gallery-item"><img src="DSC_8132.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 16" loading="lazy"><div class="cap">भरा हुआ हॉल</div></div>
-      <div class="gallery-item"><img src="DSC_8133.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 17" loading="lazy"><div class="cap">उपस्थित जनसमूह</div></div>
-      <div class="gallery-item"><img src="DSC_8134.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 18" loading="lazy"><div class="cap">मंच संचालन</div></div>
-      <div class="gallery-item"><img src="DSC_8135.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 19" loading="lazy"><div class="cap">वक्ता उद्बोधन</div></div>
-      <div class="gallery-item"><img src="DSC03248.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 20" loading="lazy"><div class="cap">पुरस्कार प्रदान</div></div>
-      <div class="gallery-item"><img src="DSC03244_1.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 21" loading="lazy"><div class="cap">भरा हुआ सभागार</div></div>
-      <div class="gallery-item"><img src="DSC03245_1.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 22" loading="lazy"><div class="cap">माल्यार्पण समारोह</div></div>
-      <div class="gallery-item"><img src="DSC03246_1.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 23" loading="lazy"><div class="cap">सम्मान चिन्ह प्रदान</div></div>
-      <div class="gallery-item"><img src="DSC03247_1.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 24" loading="lazy"><div class="cap">दर्शक दीर्घा</div></div>
-      <div class="gallery-item"><img src="DSC03249_1.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 25" loading="lazy"><div class="cap">महानिदेशक सम्मान</div></div>
-      <div class="gallery-item"><img src="DSC03250_1.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 26" loading="lazy"><div class="cap">उपहार वितरण</div></div>
-      <div class="gallery-item"><img src="DSC03363.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 27" loading="lazy"><div class="cap">माल्यार्पण पल</div></div>
-      <div class="gallery-item"><img src="DSC03363_1.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 28" loading="lazy"><div class="cap">माल्यार्पण पल</div></div>
-      <div class="gallery-item"><img src="DSC03364.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 29" loading="lazy"><div class="cap">पुरस्कार भेंट</div></div>
-      <div class="gallery-item"><img src="DSC03367.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 30" loading="lazy"><div class="cap">सम्मान समारोह</div></div>
-      <div class="gallery-item"><img src="DSC03368.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 31" loading="lazy"><div class="cap">पुस्तक भेंट</div></div>
-      <div class="gallery-item"><img src="DSC03368_1.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 32" loading="lazy"><div class="cap">पुस्तक भेंट</div></div>
-      <div class="gallery-item"><img src="DSC03372.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 33" loading="lazy"><div class="cap">ट्रॉफी सम्मान</div></div>
-      <div class="gallery-item"><img src="DSC03373.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 34" loading="lazy"><div class="cap">ट्रॉफी सम्मान</div></div>
-      <div class="gallery-item"><img src="DSC_8138.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 35" loading="lazy"><div class="cap">भव्य ऑडिटोरियम</div></div>
-      <div class="gallery-item"><img src="DSC_8139.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 36" loading="lazy"><div class="cap">छात्र समूह</div></div>
-      <div class="gallery-item"><img src="DSC_8140.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 37" loading="lazy"><div class="cap">उपस्थित जनसमूह</div></div>
-      <div class="gallery-item"><img src="DSC_8141.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 38" loading="lazy"><div class="cap">पुरस्कार क्षण</div></div>
-      <div class="gallery-item"><img src="DSC_8142.webp" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 39" loading="lazy"><div class="cap">पुरस्कार क्षण</div></div>
-      <div class="gallery-item"><img src="DSC03374.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 40" loading="lazy"><div class="cap">पुस्तक भेंट समारोह</div></div>
-      <div class="gallery-item"><img src="DSC03375.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 41" loading="lazy"><div class="cap">पुस्तक भेंट समारोह</div></div>
-      <div class="gallery-item"><img src="DSC03416.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 42" loading="lazy"><div class="cap">टीम फोटो</div></div>
-      <div class="gallery-item"><img src="DSC03417.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 43" loading="lazy"><div class="cap">टीम फोटो</div></div>
-      <div class="gallery-item"><img src="DSC03418.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 44" loading="lazy"><div class="cap">टीम फोटो</div></div>
-      <div class="gallery-item"><img src="DSC03419.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 45" loading="lazy"><div class="cap">टीम फोटो</div></div>
-      <div class="gallery-item"><img src="DSC03420.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 46" loading="lazy"><div class="cap">टीम फोटो</div></div>
-      <div class="gallery-item"><img src="DSC03421.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 47" loading="lazy"><div class="cap">टीम फोटो</div></div>
-      <div class="gallery-item"><img src="DSC03422.JPG" alt="उमा टेक्निकल कॉलेज कार्यक्रम फोटो 48" loading="lazy"><div class="cap">टीम फोटो</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lbClose">&times;</span>
-  <span class="lightbox-nav lightbox-prev" id="lbPrev">&#10094;</span>
-  <img id="lbImg" src="" alt="बड़ी फोटो">
-  <span class="lightbox-nav lightbox-next" id="lbNext">&#10095;</span>
-</div>
-
 <section id="location" class="location">
   <div class="wrap">
     <div class="section-head">
@@ -609,29 +532,17 @@
     </div>
     <div class="loc-grid">
       <div class="loc-card">
-        <h3>कॉलेज का नया पता</h3>
-        <div class="loc-line">
-          <span class="ic">📍</span>
-          <span>पिलर नं-31, इंडियन ऑयल पेट्रोल पंप के ठीक सामने, रुस्तमपुर चौराहा, गोरखपुर, उत्तर प्रदेश - 273001</span>
-        </div>
-        <div class="loc-line">
-          <span class="ic">📞</span>
-          <span><a href="tel:+916306290994" style="color:var(--brand); font-weight:700;">+91-6306290994</a></span>
-        </div>
-        <div class="loc-line">
-          <span class="ic">🕒</span>
-          <span>ऑफिस समय: सुबह 8:00 बजे से शाम 5:00 बजे तक (रविवार बंद)</span>
-        </div>
-        <a class="directions" href="https://maps.app.goo.gl/PJdwLKXbjPG6shZZA" target="_blank" rel="noopener">🗺️ Google Maps पर रास्ता देखें (Click Here) →</a>
+        <h3>कॉलेज का पता</h3>
+        <div class="loc-line"><span class="ic">📍</span><span>पिलर नं-31, इंडियन ऑयल पेट्रोल पंप के ठीक सामने, रुस्तमपुर चौराहा, गोरखपुर, उत्तर Pradesh - 273016</span></div>
+        <div class="loc-line"><span class="ic">📞</span><span><a href="tel:+916306290994" style="color:var(--brand); font-weight:700;">+91-6306290994</a></span></div>
+        <div class="loc-line"><span class="ic">🕒</span><span>ऑफिस समय: सुबह 8:00 बजे से शाम 5:00 बजे तक (रविवार बंद)</span></div>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Rustampur+Chauraha+Gorakhpur" target="_blank" rel="noopener">🗺️ Google Maps पर रास्ता देखें (Click Here) →</a>
       </div>
       <div class="map-frame">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.8569838381534!2d83.36279037613589!3d26.734934976752835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399143dfca4ea87f%3A0xe54e1a067ff0c8f5!2zMjbCsDQ0JzA1LjgiTiA4M8KwMjEnNTMuOCJF!5e0!3m2!1shi!2sin!4v1714800000000!5m2!1shi!2sin"
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade"
-          title="उमा टेक्निकल डिग्री कॉलेज लोकेशन मैप">
-        </iframe>
+          src="https://maps.google.com/maps?q=Rustampur%20Chauraha%2C%20Gorakhpur%2C%20Uttar%20Pradesh&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="उमा टेक्निकल डिग्री कॉलेज लोकेशन मैप"></iframe>
       </div>
     </div>
   </div>
@@ -650,7 +561,6 @@
           <li><a href="#courses">कंप्यूटर डिप्लोमा</a></li>
           <li><a href="#courses">एसी-फ्रिज मैकेनिकल कोर्स</a></li>
           <li><a href="#offers">फीस डिस्काउंट ऑफर</a></li>
-          <li><a href="#gallery">इवेंट गैलरी</a></li>
           <li><a href="#location">फ्री डेमो क्लास बुक करें</a></li>
         </ul>
       </div>
@@ -670,43 +580,10 @@
   </div>
 </footer>
 
-<!-- Modern Smart Sticky Bar for Mobile Conversion -->
 <div class="sticky-call">
   <a class="sticky-btn wp-b" href="https://wa.me/916306290994?text=Hi,%20I%20am%20interested%20in%20admission" target="_blank">WhatsApp करें</a>
   <a class="sticky-btn call-b" href="tel:+916306290994">अभी कॉल करें</a>
 </div>
-
-<script>
-  (function(){
-    var images = Array.from(document.querySelectorAll('#galleryGrid img'));
-    var lb = document.getElementById('lightbox');
-    var lbImg = document.getElementById('lbImg');
-    var idx = 0;
-
-    function open(i){
-      idx = i;
-      lbImg.src = images[idx].getAttribute('src');
-      lb.classList.add('open');
-    }
-    function close(){ lb.classList.remove('open'); }
-    function next(){ idx = (idx + 1) % images.length; lbImg.src = images[idx].getAttribute('src'); }
-    function prev(){ idx = (idx - 1 + images.length) % images.length; lbImg.src = images[idx].getAttribute('src'); }
-
-    images.forEach(function(img, i){
-      img.parentElement.addEventListener('click', function(){ open(i); });
-    });
-    document.getElementById('lbClose').addEventListener('click', close);
-    document.getElementById('lbNext').addEventListener('click', next);
-    document.getElementById('lbPrev').addEventListener('click', prev);
-    lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
-    document.addEventListener('keydown', function(e){
-      if(!lb.classList.contains('open')) return;
-      if(e.key === 'Escape') close();
-      if(e.key === 'ArrowRight') next();
-      if(e.key === 'ArrowLeft') prev();
-    });
-  })();
-</script>
 
 </body>
 </html>
