@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Khand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -35,17 +35,20 @@
   <style>
     /* ---------- Tokens ---------- */
     :root {
-      --ink: #0F1F1A;
-      --pcb: #0D4B3A;
-      --pcb-deep: #093729;
-      --pcb-lite: #E3EFE9;
-      --tape: #FFC21A;
-      --paper: #F4F6F1;
+      --ink: #1C1017;
+      --wine: #5A1430;
+      --wine-deep: #3A0C1F;
+      --wine-lite: #F7EEF1;
+      --rose: #E2B8A0;
+      --rose-soft: #F2D3C4;
+      --rose-deep: #8C4A3A;
+      --paper: #F8F6F6;
       --white: #FFFFFF;
-      --line: #D5DBD3;
-      --mute: #51615A;
-      --wa: #15803D;
-      --radius: 6px;
+      --line: #E6DEE1;
+      --mute: #6A5A62;
+      --wa: #5A1430;
+      --radius: 4px;
+      --serif: 'Noto Serif Devanagari', 'Hind', serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,7 +64,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, .display { font-family: 'Khand', 'Hind', sans-serif; }
+    h1, h2, h3, .display { font-family: var(--serif); }
 
     img { max-width: 100%; }
 
@@ -69,9 +72,9 @@
 
     .wrap { max-width: 1180px; margin: 0 auto; padding: 0 22px; }
 
-    :focus-visible { outline: 3px solid var(--pcb); outline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--wine); outline-offset: 3px; }
     .dark :focus-visible, .hero :focus-visible, .topstrip :focus-visible, footer :focus-visible {
-      outline-color: var(--tape);
+      outline-color: var(--rose);
     }
 
     /* ---------- Buttons ---------- */
@@ -91,12 +94,12 @@
       font-family: inherit;
       transition: background-color .15s, color .15s, border-color .15s;
     }
-    .btn-tape { background: var(--tape); color: var(--ink); }
-    .btn-tape:hover { background: #FFB000; }
+    .btn-accent { background: var(--rose); color: var(--ink); }
+    .btn-accent:hover { background: #EBC9B5; }
     .btn-wa { background: var(--wa); color: #fff; }
-    .btn-wa:hover { background: #116B32; }
-    .btn-pcb { background: var(--pcb); color: #fff; }
-    .btn-pcb:hover { background: var(--pcb-deep); }
+    .btn-wa:hover { background: #3A0C1F; }
+    .btn-brand { background: var(--wine); color: #fff; }
+    .btn-brand:hover { background: var(--wine-deep); }
     .btn-ink { background: var(--ink); color: #fff; }
     .btn-ink:hover { background: #000; }
     .btn-line { border-color: currentColor; color: #fff; background: transparent; }
@@ -104,12 +107,12 @@
     .btn-block { width: 100%; }
 
     /* ---------- Top strip ---------- */
-    .topstrip { background: var(--ink); color: #E3ECE7; font-size: .93rem; padding: 9px 0; }
+    .topstrip { background: var(--ink); color: #EBDDE2; font-size: .93rem; padding: 9px 0; }
     .topstrip .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px 20px; }
     .status { display: flex; align-items: center; gap: 10px; }
     .dot { width: 9px; height: 9px; border-radius: 50%; background: #FF5A4F; flex-shrink: 0; animation: blink 1.4s infinite; }
     @keyframes blink { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
-    .topstrip a { color: var(--tape); font-weight: 700; text-decoration: none; }
+    .topstrip a { color: var(--rose); font-weight: 700; text-decoration: none; }
     .topstrip a:hover { text-decoration: underline; }
 
     /* ---------- Header ---------- */
@@ -127,28 +130,32 @@
     .gov-logos img { height: 38px; width: auto; object-fit: contain; display: block; }
     .links { display: flex; gap: 26px; }
     .links a { color: var(--ink); text-decoration: none; font-weight: 500; padding: 6px 0; border-bottom: 2px solid transparent; }
-    .links a:hover { border-bottom-color: var(--pcb); }
+    .links a:hover { border-bottom-color: var(--wine); }
+    .menu-btn {
+      display: none; align-items: center; justify-content: center; width: 46px; height: 46px;
+      background: var(--white); color: var(--ink); border: 2px solid var(--line); border-radius: var(--radius); cursor: pointer;
+    }
 
     /* ---------- Hero ---------- */
-    .hero { position: relative; overflow: hidden; background: var(--pcb); color: #fff; padding: 76px 0 88px; }
+    .hero { position: relative; overflow: hidden; background: var(--wine); color: #fff; padding: 76px 0 88px; }
     .traces { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-    .traces path, .traces circle { fill: none; stroke: rgba(255,255,255,.1); stroke-width: 2; }
+    .traces path, .traces circle { fill: none; stroke: rgba(226,184,160,.18); stroke-width: 2; }
     .hero-grid { position: relative; display: grid; grid-template-columns: 1.25fr .85fr; gap: 56px; align-items: center; }
     .hero h1 { font-size: clamp(2.5rem, 5.4vw, 4.2rem); line-height: 1.22; font-weight: 700; }
-    .hero h1 .line2 { display: block; color: var(--tape); }
-    .lead { font-size: 1.15rem; color: #CFE3D9; max-width: 54ch; margin: 24px 0 34px; }
+    .hero h1 .line2 { display: block; color: var(--rose); }
+    .lead { font-size: 1.15rem; color: #E3CFD6; max-width: 54ch; margin: 24px 0 34px; }
     .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
 
     /* Admission ticket */
     .ticket { background: var(--white); color: var(--ink); border-radius: 8px; box-shadow: 8px 8px 0 rgba(0,0,0,.28); }
     .ticket-top { padding: 26px 28px 22px; }
-    .ticket-status { display: flex; align-items: center; gap: 9px; font-weight: 600; color: var(--pcb); font-size: .97rem; }
+    .ticket-status { display: flex; align-items: center; gap: 9px; font-weight: 600; color: var(--wine); font-size: .97rem; }
     .ticket-offer { display: flex; align-items: center; gap: 18px; margin-top: 10px; }
-    .ticket-offer .num { font-family: 'Khand', sans-serif; font-size: 5.6rem; line-height: 1.05; font-weight: 700; }
+    .ticket-offer .num { font-family: var(--serif); font-size: 5.6rem; line-height: 1.05; font-weight: 700; }
     .ticket-offer .txt { font-size: 1.15rem; font-weight: 600; line-height: 1.4; }
     .cut { position: relative; border-top: 2px dashed var(--line); }
     .cut::before, .cut::after {
-      content: ""; position: absolute; top: -13px; width: 24px; height: 24px; border-radius: 50%; background: var(--pcb);
+      content: ""; position: absolute; top: -13px; width: 24px; height: 24px; border-radius: 50%; background: var(--wine);
     }
     .cut::before { left: -12px; }
     .cut::after { right: -12px; }
@@ -160,37 +167,37 @@
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
     .stat { padding: 24px 22px; border-left: 1px solid var(--line); }
     .stat:first-child { border-left: 0; padding-left: 0; }
-    .stat b { display: block; font-family: 'Khand', sans-serif; font-size: 1.9rem; line-height: 1.3; color: var(--pcb); font-weight: 700; }
+    .stat b { display: block; font-family: var(--serif); font-size: 1.9rem; line-height: 1.3; color: var(--wine); font-weight: 700; }
     .stat span { color: var(--mute); font-size: .95rem; }
 
     /* ---------- Shared section styles ---------- */
     .band { padding: 88px 0; }
     .band.white { background: var(--white); }
-    .band.dark { background: var(--pcb); color: #fff; }
+    .band.dark { background: var(--wine); color: #fff; }
     .band h2 { font-size: clamp(2rem, 4vw, 2.7rem); line-height: 1.25; font-weight: 700; margin-bottom: 12px; }
     .sec-lead { color: var(--mute); max-width: 62ch; }
-    .dark .sec-lead { color: #BFD8CC; }
+    .dark .sec-lead { color: #D4BCC6; }
 
     /* ---------- 3D scroll card (container scroll) ---------- */
     .hero .traces { top: -80px; height: calc(100% + 160px); will-change: transform; }
     .ticket { transition: transform .18s ease-out; will-change: transform; }
 
-    .s3d { background: var(--pcb-lite); padding: 84px 0 120px; overflow: hidden; }
+    .s3d { background: var(--wine-lite); padding: 84px 0 120px; overflow: hidden; }
     .s3d-inner { perspective: 1000px; }
     .s3d-head { max-width: 880px; margin: 0 auto 44px; text-align: center; will-change: transform; }
     .s3d-head h2 { font-size: clamp(2.3rem, 6.4vw, 4.6rem); line-height: 1.2; margin-bottom: 14px; }
     .s3d-head p { color: var(--mute); font-size: 1.1rem; }
     .s3d-card {
       max-width: 1020px; height: 30rem; margin: 0 auto; padding: 8px;
-      background: var(--ink); border: 4px solid #3B4D45; border-radius: 30px;
+      background: var(--ink); border: 4px solid #6B2E47; border-radius: 30px;
       box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003;
       transform-origin: center top; will-change: transform;
       transform: rotateX(20deg) scale(1.05);
     }
-    .s3d-screen { height: 100%; border-radius: 18px; overflow: hidden; background: #CBD3CC;
+    .s3d-screen { height: 100%; border-radius: 18px; overflow: hidden; background: #D8CDD2;
       display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 4px; }
     .s3d-screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .s3d-screen img:first-child { grid-column: span 2; grid-row: span 2; }
+    .s3d-screen .g:first-child { grid-column: span 2; grid-row: span 2; }
     @media (min-width: 769px) { .s3d-card { height: 40rem; } }
     @media (max-width: 768px) { .s3d { padding: 56px 0 80px; } .s3d-card { border-radius: 22px; } .s3d-screen { border-radius: 14px; } }
 
@@ -198,7 +205,7 @@
     .course-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 44px; }
     .col-head {
       display: flex; justify-content: space-between; align-items: baseline;
-      border-top: 4px solid var(--pcb); padding-top: 12px; margin-bottom: 4px;
+      border-top: 4px solid var(--wine); padding-top: 12px; margin-bottom: 4px;
     }
     .col-head h3 { font-size: 1.55rem; font-weight: 700; }
     .col-head span { color: var(--mute); font-size: .92rem; }
@@ -206,36 +213,36 @@
       display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: start;
       padding: 18px 10px; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none;
     }
-    .course:hover { background: var(--pcb-lite); }
-    .course h4 { font-family: 'Khand', sans-serif; font-size: 1.32rem; line-height: 1.35; font-weight: 600; }
+    .course:hover { background: var(--wine-lite); }
+    .course h4 { font-family: var(--serif); font-size: 1.32rem; line-height: 1.35; font-weight: 600; }
     .course p { grid-column: 1; color: var(--mute); font-size: .97rem; line-height: 1.6; }
     .chip {
       grid-column: 2; grid-row: 1; white-space: nowrap; align-self: start;
-      background: var(--white); border: 1px solid #B7C3BB; color: var(--pcb);
+      background: var(--white); border: 1px solid #D9CCD2; color: var(--wine);
       border-radius: 999px; padding: 1px 12px; font-size: .82rem; font-weight: 600;
     }
-    .chip.hot { background: var(--tape); border-color: var(--tape); color: var(--ink); }
+    .chip.hot { background: var(--rose); border-color: var(--rose); color: var(--ink); }
     .course-hint { margin-top: 26px; color: var(--mute); font-size: .95rem; }
 
     /* ---------- Offers ---------- */
     .combo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
-    .combo { background: var(--pcb-deep); border: 1px solid rgba(255,255,255,.22); border-radius: 8px; padding: 30px; }
+    .combo { background: var(--wine-deep); border: 1px solid rgba(255,255,255,.22); border-radius: 8px; padding: 30px; }
     .combo h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 18px; }
     .eq { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 20px; }
     .term { border: 1px solid rgba(255,255,255,.4); border-radius: var(--radius); padding: 7px 14px; font-weight: 600; line-height: 1.35; }
-    .term small { display: block; font-weight: 400; color: #BFD8CC; font-size: .8rem; }
-    .op { font-family: 'Khand', sans-serif; font-size: 1.7rem; line-height: 1; color: var(--tape); }
-    .result { background: var(--tape); color: var(--ink); border-radius: var(--radius); padding: 7px 16px; font-family: 'Khand', sans-serif; font-size: 1.4rem; font-weight: 700; line-height: 1.4; }
-    .combo p { color: #CFE3D9; }
+    .term small { display: block; font-weight: 400; color: #D4BCC6; font-size: .8rem; }
+    .op { font-family: var(--serif); font-size: 1.7rem; line-height: 1; color: var(--rose); }
+    .result { background: var(--rose); color: var(--ink); border-radius: var(--radius); padding: 7px 16px; font-family: var(--serif); font-size: 1.4rem; font-weight: 700; line-height: 1.4; }
+    .combo p { color: #E3CFD6; }
     .deadline {
       position: relative; overflow: hidden; margin-top: 28px; border-radius: var(--radius);
-      background: var(--tape); color: var(--ink); padding: 30px 24px 20px;
+      background: var(--rose); color: var(--ink); padding: 30px 24px 20px;
       display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px;
       font-weight: 700;
     }
     .deadline::before {
       content: ""; position: absolute; left: 0; right: 0; top: 0; height: 9px;
-      background: repeating-linear-gradient(-45deg, var(--ink) 0 10px, var(--tape) 10px 20px);
+      background: repeating-linear-gradient(-45deg, var(--ink) 0 10px, var(--rose) 10px 20px);
     }
 
     /* ---------- About ---------- */
@@ -247,46 +254,71 @@
     }
     .logos img { height: 48px; width: auto; object-fit: contain; }
     .proof { padding: 22px 0; border-bottom: 1px solid var(--line); }
-    .proof:first-child { border-top: 4px solid var(--pcb); }
+    .proof:first-child { border-top: 4px solid var(--wine); }
     .proof h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 4px; }
     .proof p { color: var(--mute); }
 
-    /* ---------- Gallery ---------- */
-    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 190px; gap: 10px; margin-top: 40px; }
-    .g { display: block; padding: 0; border: 0; background: #CBD3CC; border-radius: var(--radius); overflow: hidden; cursor: zoom-in; }
-    .g img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .g:first-child { grid-column: span 2; grid-row: span 2; }
-    .g.extra { display: none; }
-    .gallery.open .g.extra { display: block; }
-    .more { margin-top: 26px; text-align: center; }
+    /* ---------- Gallery (3D scroll cards) ---------- */
+    .gal { overflow: hidden; }
+    .g3d-list { display: grid; gap: 72px; margin-top: 48px; }
+    .g3d-wrap { perspective: 1000px; }
+    .g3d-card {
+      max-width: 1020px; margin: 0 auto; padding: 8px;
+      background: var(--ink); border: 4px solid #6B2E47; border-radius: 30px;
+      box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003;
+      transform-origin: center top; will-change: transform;
+      transform: rotateX(22deg) scale(.94);
+    }
+    .g3d-screen { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 170px; gap: 4px; border-radius: 18px; overflow: hidden; background: #D8CDD2; }
+    .g { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: #D8CDD2; cursor: zoom-in; overflow: hidden; }
+    .g img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+    .g:hover img { transform: scale(1.06); }
+    .g.wide { grid-column: span 2; }
+    .g3d-cap { text-align: center; color: var(--mute); font-size: .92rem; margin-top: 18px; }
+    @media (max-width: 768px) {
+      .g3d-list { gap: 48px; }
+      .g3d-card { border-radius: 22px; }
+      .g3d-screen { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; border-radius: 14px; }
+    }
 
-    dialog#lb { position: relative; border: 0; background: transparent; padding: 0; max-width: min(94vw, 1100px); overflow: visible; }
-    dialog#lb::backdrop { background: rgba(8, 20, 15, .9); }
-    dialog#lb img { display: block; max-width: 100%; max-height: 84vh; margin: 0 auto; border-radius: var(--radius); }
-    .lb-close { position: absolute; top: -52px; right: 0; background: var(--tape); color: var(--ink); border: 0; border-radius: var(--radius); font: 700 1rem 'Hind', sans-serif; padding: 8px 18px; cursor: pointer; }
+    /* Full-size photo viewer */
+    dialog#lb { position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(20, 6, 12, .97); color: #fff; overflow: hidden; }
+    dialog#lb::backdrop { background: #000; }
+    .lb-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; touch-action: none; overflow: hidden; cursor: zoom-in; }
+    .lb-stage.zoomed { cursor: grab; }
+    .lb-img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; user-select: none; -webkit-user-drag: none; transform-origin: center center; will-change: transform; }
+    .lb-bar { position: absolute; top: 0; left: 0; right: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; pointer-events: none; }
+    .lb-bar > * { pointer-events: auto; }
+    .lb-count { background: rgba(0,0,0,.6); padding: 4px 14px; border-radius: 999px; font-weight: 600; font-size: .95rem; }
+    .lb-btn { background: var(--rose); color: var(--ink); border: 0; border-radius: var(--radius); font: 700 1rem 'Hind', sans-serif; padding: 8px 18px; min-height: 44px; cursor: pointer; }
+    .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 46px; height: 64px; border: 0; border-radius: var(--radius); background: rgba(0,0,0,.55); color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+    .lb-nav:hover { background: rgba(0,0,0,.8); }
+    .lb-prev { left: 8px; }
+    .lb-next { right: 8px; }
+    .lb-hint { padding: 0 16px; position: absolute; left: 0; right: 0; bottom: 14px; z-index: 2; margin: 0; text-align: center; font-size: .88rem; color: #D4BCC6; pointer-events: none; text-shadow: 0 1px 4px #000; }
 
     /* ---------- Location ---------- */
     .loc-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; margin-top: 40px; align-items: stretch; }
     .loc-card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 32px; }
     .loc-card h3 { font-size: 1.55rem; font-weight: 700; margin-bottom: 18px; }
     .loc-list { display: grid; grid-template-columns: 64px 1fr; gap: 14px 12px; margin-bottom: 26px; }
-    .loc-list dt { font-weight: 700; color: var(--pcb); }
+    .loc-list dt { font-weight: 700; color: var(--wine); }
     .loc-list dd a { color: var(--ink); font-weight: 700; text-decoration: none; }
-    .map-frame { min-height: 380px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #CBD3CC; }
+    .map-frame { min-height: 380px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #D8CDD2; }
     .map-frame iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; }
 
     /* ---------- Footer ---------- */
-    footer { background: var(--ink); color: #AEBDB6; padding: 64px 0 28px; }
-    .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #2B3D36; }
-    .fbrand { font-family: 'Khand', sans-serif; font-size: 1.7rem; font-weight: 700; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-    .fbrand i { width: 12px; height: 12px; background: var(--tape); border-radius: 50%; display: inline-block; }
-    footer h4 { font-family: 'Khand', sans-serif; font-size: 1.25rem; color: #fff; margin-bottom: 14px; font-weight: 600; }
+    footer { background: var(--ink); color: #C3AEB7; padding: 64px 0 28px; }
+    .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #5A2740; }
+    .fbrand { font-family: var(--serif); font-size: 1.7rem; font-weight: 700; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .fbrand i { width: 12px; height: 12px; background: var(--rose); border-radius: 50%; display: inline-block; }
+    footer h4 { font-family: var(--serif); font-size: 1.25rem; color: #fff; margin-bottom: 14px; font-weight: 600; }
     footer ul { list-style: none; }
     footer li { margin-bottom: 8px; }
-    footer a { color: #AEBDB6; text-decoration: none; }
+    footer a { color: #C3AEB7; text-decoration: none; }
     footer a:hover { color: #fff; text-decoration: underline; }
     footer .tel { color: #fff; font-weight: 700; }
-    .foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 24px; font-size: .88rem; color: #85978F; }
+    .foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 24px; font-size: .88rem; color: #A08C96; }
 
     /* ---------- Mobile sticky bar ---------- */
     .sticky-call { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999; box-shadow: 0 -4px 12px rgba(0,0,0,.18); }
@@ -296,7 +328,16 @@
 
     /* ---------- Responsive ---------- */
     @media (max-width: 960px) {
-      .links { display: none; }
+      .menu-btn { display: inline-flex; }
+      .links {
+        display: none; position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; gap: 0; background: var(--white);
+        border-bottom: 1px solid var(--line); padding: 4px 22px 12px;
+        box-shadow: 0 14px 20px rgba(0,0,0,.12);
+      }
+      .links.open { display: flex; }
+      .links a { padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
+      .links a:last-child { border-bottom: 0; }
       .hero-grid { grid-template-columns: 1fr; gap: 44px; }
       .course-cols, .combo-grid, .about-grid, .loc-grid { grid-template-columns: 1fr; }
       .course-cols { gap: 44px; }
@@ -309,6 +350,7 @@
       body { padding-bottom: 54px; font-size: 16.5px; }
       .sticky-call { display: flex; }
       .gov-logos { display: none; }
+      .navrow > .btn { display: none; }
       .hero { padding: 52px 0 60px; }
       .band { padding: 60px 0; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -325,6 +367,49 @@
       html { scroll-behavior: auto; }
       .dot { animation: none; }
     }
+    /* ---------- Premium refinements ---------- */
+    .topstrip { background: var(--wine-deep); border-bottom: 1px solid rgba(226,184,160,.4); }
+    .topstrip a { color: var(--rose-soft); }
+    header.site { border-bottom: 1px solid var(--line); }
+    .btn { letter-spacing: .01em; }
+    .btn-line { border-color: rgba(242,211,196,.75); }
+    .btn-line:hover { background: rgba(242,211,196,.12); }
+    .hero { background: var(--wine); }
+    .hero h1 { font-size: clamp(2.1rem, 4.8vw, 3.7rem); line-height: 1.34; }
+    .hero h1 .line2 { color: var(--rose-soft); }
+    .lead { color: #E8D3DB; }
+    .ticket { border-top: 4px solid var(--rose); box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+    .ticket-offer .num { font-size: 5rem; line-height: 1.2; color: var(--wine); }
+    .stat b { font-size: 1.6rem; line-height: 1.5; color: var(--wine); }
+    .band h2 { font-size: clamp(1.8rem, 3.5vw, 2.45rem); line-height: 1.4; }
+    .s3d { background: var(--wine-lite); }
+    .s3d-head h2 { font-size: clamp(1.9rem, 5vw, 3.4rem); line-height: 1.35; }
+    .col-head { border-top: 3px solid var(--rose); }
+    .col-head h3 { font-size: 1.35rem; line-height: 1.5; }
+    .course h4 { font-size: 1.15rem; line-height: 1.5; }
+    .chip { border-color: var(--line); }
+    .band.dark { background: var(--wine); }
+    .combo { background: var(--wine-deep); border-color: rgba(226,184,160,.35); }
+    .combo h3 { font-size: 1.3rem; line-height: 1.5; }
+    .term { border-color: rgba(242,211,196,.45); }
+    .result { font-size: 1.2rem; line-height: 1.5; }
+    .deadline { background: linear-gradient(135deg, #F2D3C4, #E2B8A0); padding: 20px 24px; }
+    .deadline::before { display: none; }
+    .proof:first-child { border-top: 3px solid var(--rose); }
+    .proof h3 { font-size: 1.2rem; line-height: 1.5; }
+    .loc-card h3 { font-size: 1.35rem; line-height: 1.5; }
+    footer { background: var(--wine-deep); }
+    .fbrand { font-size: 1.4rem; line-height: 1.5; }
+    footer h4 { font-size: 1.15rem; line-height: 1.5; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: clamp(1.9rem, 8vw, 2.4rem); }
+      .ticket-offer .num { font-size: 4.2rem; }
+    }
+    /* ---------- Wine and rose palette: WhatsApp buttons ---------- */
+    .btn-wa { background: var(--wine); color: #fff; }
+    .btn-wa:hover { background: var(--wine-deep); }
+    .sticky-btn.wa { background: var(--rose); color: var(--wine-deep); }
+    .sticky-btn.call { background: var(--wine-deep); }
   </style>
 </head>
 <body>
@@ -353,14 +438,17 @@
           <img src="skill-india-logo-png_seeklogo-408074.png" alt="Skill India Logo">
         </div>
       </div>
-      <nav class="links" aria-label="मुख्य मेन्यू">
+      <nav class="links" id="main-nav" aria-label="मुख्य मेन्यू">
         <a href="#courses">कोर्स लिस्ट</a>
         <a href="#offers">विशेष ऑफर</a>
         <a href="#about">प्रमाण पत्र</a>
         <a href="#gallery">फोटो गैलरी</a>
         <a href="#location">लोकेशन</a>
       </nav>
-      <a class="btn btn-pcb" href="tel:+916306290994">अभी बात करें</a>
+      <a class="btn btn-brand" href="tel:+916306290994">अभी बात करें</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="main-nav" aria-label="मेन्यू खोलें">
+        <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+      </button>
     </div>
   </header>
 
@@ -393,7 +481,7 @@
             कंप्यूटर कोर्सेज (CCC, ADCA) से लेकर स्मार्ट AC-फ्रिज, इनवर्टर, LED रिपेयरिंग और एडवांस इलेक्ट्रॉनिक्स तक — सीखें 100% लाइव प्रैक्टिकल लैब्स में।
           </p>
           <div class="btn-row">
-            <a href="tel:+916306290994" class="btn btn-tape">सीट बुक करने के लिए कॉल करें</a>
+            <a href="tel:+916306290994" class="btn btn-accent">सीट बुक करने के लिए कॉल करें</a>
             <a href="https://wa.me/916306290994" class="btn btn-line" target="_blank" rel="noopener">WhatsApp पर संपर्क करें</a>
           </div>
         </div>
@@ -409,7 +497,7 @@
           <div class="cut" aria-hidden="true"></div>
           <div class="ticket-bottom">
             <p class="ticket-meta">ऑफिस समय: सुबह 8:00 से शाम 5:00 बजे तक (रविवार बंद)</p>
-            <a href="tel:+916306290994" class="btn btn-tape btn-block">अभी कॉल करें</a>
+            <a href="tel:+916306290994" class="btn btn-accent btn-block">अभी कॉल करें</a>
             <a href="https://wa.me/916306290994?text=Hi,%20I%20am%20interested%20in%20admission" class="btn btn-wa btn-block" target="_blank" rel="noopener">WhatsApp करें</a>
           </div>
         </aside>
@@ -437,11 +525,11 @@
         </div>
         <div class="s3d-card" id="s3d-card">
           <div class="s3d-screen">
-            <img src="DSC03244_1.JPG" alt="कैंपस और लैब की झलक" loading="lazy">
-            <img src="DSC03416.JPG" alt="कैंपस फोटो" loading="lazy">
-            <img src="DSC_8117.JPG" alt="लैब फोटो" loading="lazy">
-            <img src="DSC_8118.webp" alt="लैब फोटो" loading="lazy">
-            <img src="DSC_8124.JPG" alt="लैब फोटो" loading="lazy">
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC03244_1.JPG" alt="कैंपस और लैब की झलक" loading="lazy"></button>
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC03416.JPG" alt="कैंपस फोटो" loading="lazy"></button>
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC_8117.JPG" alt="लैब फोटो" loading="lazy"></button>
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC_8118.webp" alt="लैब फोटो" loading="lazy"></button>
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC_8124.JPG" alt="लैब फोटो" loading="lazy"></button>
           </div>
         </div>
       </div>
@@ -534,15 +622,8 @@
 
       <div class="combo-grid">
         <div class="combo">
-          <h3>AC / फ्रिज कोर्स के साथ</h3>
-          <div class="eq">
-            <span class="term">AC / फ्रिज कोर्स</span>
-            <span class="op">+</span>
-            <span class="term">Tally Prime <small>₹4000 का कोर्स</small></span>
-            <span class="op">=</span>
-            <span class="result">Tally फ्री</span>
-          </div>
-          <p>तकनीकी काम सीखने के साथ-साथ दुकान या बिज़नेस का अकाउंट संभालना भी सीखें। टैली प्राइम कोर्स (मूल्य ₹4000) बिल्कुल फ्री।</p>
+          <h3>AC / फ्रिज कोर्स</h3>
+          <p>इनवर्टर AC, स्प्लिट AC की गैस चार्जिंग, फॉल्ट फाइंडिंग और फ्रिज की फॉल्ट डायग्नोसिस — सब कुछ 100% लाइव प्रैक्टिकल लैब में सीखें।</p>
         </div>
 
         <div class="combo">
@@ -591,79 +672,104 @@
           <h3>NIELIT (नाइलिट) अप्रूव्ड केंद्र</h3>
           <p>गोरखपुर क्षेत्र में उच्च स्तरीय कंप्यूटर शिक्षा के लिए अधिकृत केंद्र।</p>
         </div>
-        <div class="proof">
-          <h3>बिज़नेस गाइडेंस और लोन सहायता</h3>
-          <p>कोर्स के बाद जो छात्र खुद की दुकान खोलना चाहते हैं, उन्हें टूलकिट और सरकारी लोन में पूरी मदद।</p>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- Gallery -->
-  <section id="gallery" class="band">
+  <section id="gallery" class="band gal">
     <div class="wrap">
       <h2>कॉलेज कैंपस और लैब गैलरी</h2>
-      <p class="sec-lead">हमारे आधुनिक प्रैक्टिकल क्लासरूम की वास्तविक झलकियां (47 लाइव तस्वीरें)। किसी भी फोटो पर टैप करके बड़ा देखें।</p>
-
-      <div class="gallery" id="gallery-grid">
-        <button type="button" class="g" aria-label="फोटो 1 बड़ी करें"><img src="DSC03244_1.JPG" alt="कैंपस और लैब फोटो 1" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 2 बड़ी करें"><img src="DSC03245_1.JPG" alt="कैंपस और लैब फोटो 2" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 3 बड़ी करें"><img src="DSC03246_1.JPG" alt="कैंपस और लैब फोटो 3" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 4 बड़ी करें"><img src="DSC03247_1.JPG" alt="कैंपस और लैब फोटो 4" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 5 बड़ी करें"><img src="DSC03248.JPG" alt="कैंपस और लैब फोटो 5" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 6 बड़ी करें"><img src="DSC03249_1.JPG" alt="कैंपस और लैब फोटो 6" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 7 बड़ी करें"><img src="DSC03250_1.JPG" alt="कैंपस और लैब फोटो 7" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 8 बड़ी करें"><img src="DSC03363.JPG" alt="कैंपस और लैब फोटो 8" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 9 बड़ी करें"><img src="DSC03363_1.JPG" alt="कैंपस और लैब फोटो 9" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 10 बड़ी करें"><img src="DSC03364.JPG" alt="कैंपस और लैब फोटो 10" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 11 बड़ी करें"><img src="DSC03367.JPG" alt="कैंपस और लैब फोटो 11" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 12 बड़ी करें"><img src="DSC03368.JPG" alt="कैंपस और लैब फोटो 12" loading="lazy"></button>
-        <button type="button" class="g" aria-label="फोटो 13 बड़ी करें"><img src="DSC03368_1.JPG" alt="कैंपस और लैब फोटो 13" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 14 बड़ी करें"><img src="DSC03372.JPG" alt="कैंपस और लैब फोटो 14" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 15 बड़ी करें"><img src="DSC03373.JPG" alt="कैंपस और लैब फोटो 15" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 16 बड़ी करें"><img src="DSC03374.JPG" alt="कैंपस और लैब फोटो 16" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 17 बड़ी करें"><img src="DSC03375.JPG" alt="कैंपस और लैब फोटो 17" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 18 बड़ी करें"><img src="DSC03416.JPG" alt="कैंपस और लैब फोटो 18" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 19 बड़ी करें"><img src="DSC03417.JPG" alt="कैंपस और लैब फोटो 19" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 20 बड़ी करें"><img src="DSC03418.JPG" alt="कैंपस और लैब फोटो 20" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 21 बड़ी करें"><img src="DSC03419.JPG" alt="कैंपस और लैब फोटो 21" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 22 बड़ी करें"><img src="DSC03420.JPG" alt="कैंपस और लैब फोटो 22" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 23 बड़ी करें"><img src="DSC03421.JPG" alt="कैंपस और लैब फोटो 23" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 24 बड़ी करें"><img src="DSC03422.JPG" alt="कैंपस और लैब फोटो 24" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 25 बड़ी करें"><img src="DSC_8117.JPG" alt="कैंपस और लैब फोटो 25" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 26 बड़ी करें"><img src="DSC_8118.webp" alt="कैंपस और लैब फोटो 26" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 27 बड़ी करें"><img src="DSC_8119.webp" alt="कैंपस और लैब फोटो 27" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 28 बड़ी करें"><img src="DSC_8120.webp" alt="कैंपस और लैब फोटो 28" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 29 बड़ी करें"><img src="DSC_8121.webp" alt="कैंपस और लैब फोटो 29" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 30 बड़ी करें"><img src="DSC_8123.JPG" alt="कैंपस और लैब फोटो 30" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 31 बड़ी करें"><img src="DSC_8124.JPG" alt="कैंपस और लैब फोटो 31" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 32 बड़ी करें"><img src="DSC_8125.JPG" alt="कैंपस और लैब फोटो 32" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 33 बड़ी करें"><img src="DSC_8126.JPG" alt="कैंपस और लैब फोटो 33" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 34 बड़ी करें"><img src="DSC_8127.webp" alt="कैंपस और लैब फोटो 34" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 35 बड़ी करें"><img src="DSC_8128.webp" alt="कैंपस और लैब फोटो 35" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 36 बड़ी करें"><img src="DSC_8129.webp" alt="कैंपस और लैब फोटो 36" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 37 बड़ी करें"><img src="DSC_8130.JPG" alt="कैंपस और लैब फोटो 37" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 38 बड़ी करें"><img src="DSC_8131.webp" alt="कैंपस और लैब फोटो 38" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 39 बड़ी करें"><img src="DSC_8132.webp" alt="कैंपस और लैब फोटो 39" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 40 बड़ी करें"><img src="DSC_8133.webp" alt="कैंपस और लैब फोटो 40" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 41 बड़ी करें"><img src="DSC_8134.webp" alt="कैंपस और लैब फोटो 41" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 42 बड़ी करें"><img src="DSC_8135.webp" alt="कैंपस और लैब फोटो 42" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 43 बड़ी करें"><img src="DSC_8138.webp" alt="कैंपस और लैब फोटो 43" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 44 बड़ी करें"><img src="DSC_8139.webp" alt="कैंपस और लैब फोटो 44" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 45 बड़ी करें"><img src="DSC_8140.webp" alt="कैंपस और लैब फोटो 45" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 46 बड़ी करें"><img src="DSC_8141.webp" alt="कैंपस और लैब फोटो 46" loading="lazy"></button>
-        <button type="button" class="g extra" aria-label="फोटो 47 बड़ी करें"><img src="DSC_8142.webp" alt="कैंपस और लैब फोटो 47" loading="lazy"></button>
-      </div>
-      <noscript><style>.g.extra { display: block; } .more { display: none; }</style></noscript>
-      <div class="more">
-        <button type="button" class="btn btn-pcb" id="more-btn">सभी 47 तस्वीरें देखें</button>
+      <p class="sec-lead">हमारे आधुनिक प्रैक्टिकल क्लासरूम की वास्तविक झलकियां (47 लाइव तस्वीरें)। किसी भी फोटो पर टैप करें — वो पूरी बड़ी खुलेगी और ज़ूम भी होगी।</p>
+      <div class="g3d-list">
+        <div class="g3d-wrap">
+          <div class="g3d-card">
+            <div class="g3d-screen">
+            <button type="button" class="g" aria-label="फोटो 1 बड़ी करके देखें"><img src="DSC03244_1.JPG" alt="कैंपस और लैब फोटो 1" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 2 बड़ी करके देखें"><img src="DSC03245_1.JPG" alt="कैंपस और लैब फोटो 2" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 3 बड़ी करके देखें"><img src="DSC03246_1.JPG" alt="कैंपस और लैब फोटो 3" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 4 बड़ी करके देखें"><img src="DSC03247_1.JPG" alt="कैंपस और लैब फोटो 4" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 5 बड़ी करके देखें"><img src="DSC03248.JPG" alt="कैंपस और लैब फोटो 5" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 6 बड़ी करके देखें"><img src="DSC03249_1.JPG" alt="कैंपस और लैब फोटो 6" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 7 बड़ी करके देखें"><img src="DSC03250_1.JPG" alt="कैंपस और लैब फोटो 7" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 8 बड़ी करके देखें"><img src="DSC03363.JPG" alt="कैंपस और लैब फोटो 8" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 9 बड़ी करके देखें"><img src="DSC03363_1.JPG" alt="कैंपस और लैब फोटो 9" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 10 बड़ी करके देखें"><img src="DSC03364.JPG" alt="कैंपस और लैब फोटो 10" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 11 बड़ी करके देखें"><img src="DSC03367.JPG" alt="कैंपस और लैब फोटो 11" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 12 बड़ी करके देखें"><img src="DSC03368.JPG" alt="कैंपस और लैब फोटो 12" loading="lazy" decoding="async"></button>
+            </div>
+          </div>
+          <p class="g3d-cap">फोटो 1 से 12</p>
+        </div>
+        <div class="g3d-wrap">
+          <div class="g3d-card">
+            <div class="g3d-screen">
+            <button type="button" class="g" aria-label="फोटो 13 बड़ी करके देखें"><img src="DSC03368_1.JPG" alt="कैंपस और लैब फोटो 13" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 14 बड़ी करके देखें"><img src="DSC03372.JPG" alt="कैंपस और लैब फोटो 14" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 15 बड़ी करके देखें"><img src="DSC03373.JPG" alt="कैंपस और लैब फोटो 15" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 16 बड़ी करके देखें"><img src="DSC03374.JPG" alt="कैंपस और लैब फोटो 16" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 17 बड़ी करके देखें"><img src="DSC03375.JPG" alt="कैंपस और लैब फोटो 17" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 18 बड़ी करके देखें"><img src="DSC03416.JPG" alt="कैंपस और लैब फोटो 18" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 19 बड़ी करके देखें"><img src="DSC03417.JPG" alt="कैंपस और लैब फोटो 19" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 20 बड़ी करके देखें"><img src="DSC03418.JPG" alt="कैंपस और लैब फोटो 20" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 21 बड़ी करके देखें"><img src="DSC03419.JPG" alt="कैंपस और लैब फोटो 21" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 22 बड़ी करके देखें"><img src="DSC03420.JPG" alt="कैंपस और लैब फोटो 22" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 23 बड़ी करके देखें"><img src="DSC03421.JPG" alt="कैंपस और लैब फोटो 23" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 24 बड़ी करके देखें"><img src="DSC03422.JPG" alt="कैंपस और लैब फोटो 24" loading="lazy" decoding="async"></button>
+            </div>
+          </div>
+          <p class="g3d-cap">फोटो 13 से 24</p>
+        </div>
+        <div class="g3d-wrap">
+          <div class="g3d-card">
+            <div class="g3d-screen">
+            <button type="button" class="g" aria-label="फोटो 25 बड़ी करके देखें"><img src="DSC_8117.JPG" alt="कैंपस और लैब फोटो 25" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 26 बड़ी करके देखें"><img src="DSC_8118.webp" alt="कैंपस और लैब फोटो 26" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 27 बड़ी करके देखें"><img src="DSC_8119.webp" alt="कैंपस और लैब फोटो 27" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 28 बड़ी करके देखें"><img src="DSC_8120.webp" alt="कैंपस और लैब फोटो 28" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 29 बड़ी करके देखें"><img src="DSC_8121.webp" alt="कैंपस और लैब फोटो 29" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 30 बड़ी करके देखें"><img src="DSC_8123.JPG" alt="कैंपस और लैब फोटो 30" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 31 बड़ी करके देखें"><img src="DSC_8124.JPG" alt="कैंपस और लैब फोटो 31" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 32 बड़ी करके देखें"><img src="DSC_8125.JPG" alt="कैंपस और लैब फोटो 32" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 33 बड़ी करके देखें"><img src="DSC_8126.JPG" alt="कैंपस और लैब फोटो 33" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 34 बड़ी करके देखें"><img src="DSC_8127.webp" alt="कैंपस और लैब फोटो 34" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 35 बड़ी करके देखें"><img src="DSC_8128.webp" alt="कैंपस और लैब फोटो 35" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 36 बड़ी करके देखें"><img src="DSC_8129.webp" alt="कैंपस और लैब फोटो 36" loading="lazy" decoding="async"></button>
+            </div>
+          </div>
+          <p class="g3d-cap">फोटो 25 से 36</p>
+        </div>
+        <div class="g3d-wrap">
+          <div class="g3d-card">
+            <div class="g3d-screen">
+            <button type="button" class="g" aria-label="फोटो 37 बड़ी करके देखें"><img src="DSC_8130.JPG" alt="कैंपस और लैब फोटो 37" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 38 बड़ी करके देखें"><img src="DSC_8131.webp" alt="कैंपस और लैब फोटो 38" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 39 बड़ी करके देखें"><img src="DSC_8132.webp" alt="कैंपस और लैब फोटो 39" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 40 बड़ी करके देखें"><img src="DSC_8133.webp" alt="कैंपस और लैब फोटो 40" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 41 बड़ी करके देखें"><img src="DSC_8134.webp" alt="कैंपस और लैब फोटो 41" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 42 बड़ी करके देखें"><img src="DSC_8135.webp" alt="कैंपस और लैब फोटो 42" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 43 बड़ी करके देखें"><img src="DSC_8138.webp" alt="कैंपस और लैब फोटो 43" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 44 बड़ी करके देखें"><img src="DSC_8139.webp" alt="कैंपस और लैब फोटो 44" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 45 बड़ी करके देखें"><img src="DSC_8140.webp" alt="कैंपस और लैब फोटो 45" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 46 बड़ी करके देखें"><img src="DSC_8141.webp" alt="कैंपस और लैब फोटो 46" loading="lazy" decoding="async"></button>
+            <button type="button" class="g wide" aria-label="फोटो 47 बड़ी करके देखें"><img src="DSC_8142.webp" alt="कैंपस और लैब फोटो 47" loading="lazy" decoding="async"></button>
+            </div>
+          </div>
+          <p class="g3d-cap">फोटो 37 से 47</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <dialog id="lb" aria-label="बड़ी फोटो">
-    <button type="button" class="lb-close">बंद करें</button>
-    <img src="" alt="">
+  <dialog id="lb" aria-label="फोटो देखें">
+    <div class="lb-stage"><img class="lb-img" src="" alt="" draggable="false"></div>
+    <div class="lb-bar">
+      <span class="lb-count"></span>
+      <button type="button" class="lb-btn lb-close">बंद करें</button>
+    </div>
+    <button type="button" class="lb-nav lb-prev" aria-label="पिछली फोटो">&#8249;</button>
+    <button type="button" class="lb-nav lb-next" aria-label="अगली फोटो">&#8250;</button>
+    <p class="lb-hint">टैप करके ज़ूम करें · उंगली से खिसकाकर देखें · दो उंगलियों से भी बड़ा करें</p>
   </dialog>
 
   <!-- Location -->
@@ -683,7 +789,7 @@
             <dt>समय</dt>
             <dd>सुबह 8:00 बजे से शाम 5:00 बजे तक (रविवार बंद)</dd>
           </dl>
-          <a class="btn btn-pcb" href="https://maps.app.goo.gl/7thUtb6GLZyvZQkdA" target="_blank" rel="noopener">Google Maps पर रास्ता देखें</a>
+          <a class="btn btn-brand" href="https://maps.app.goo.gl/7thUtb6GLZyvZQkdA" target="_blank" rel="noopener">Google Maps पर रास्ता देखें</a>
         </div>
 
         <div class="map-frame">
@@ -738,26 +844,115 @@
 
   <script>
     (function () {
-      var grid = document.getElementById('gallery-grid');
-      var moreBtn = document.getElementById('more-btn');
       var lb = document.getElementById('lb');
-      var lbImg = lb.querySelector('img');
+      var stage = lb.querySelector('.lb-stage');
+      var img = lb.querySelector('.lb-img');
+      var count = lb.querySelector('.lb-count');
+      var items = Array.prototype.slice.call(document.querySelectorAll('#gallery .g img'));
+      var idx = 0, S = 1, X = 0, Y = 0;
+      var pts = new Map(), pinch = null, drag = null, moved = false;
 
-      moreBtn.addEventListener('click', function () {
-        grid.classList.add('open');
-        moreBtn.parentNode.hidden = true;
+      function apply() {
+        img.style.transform = 'translate(' + X + 'px,' + Y + 'px) scale(' + S + ')';
+        stage.classList.toggle('zoomed', S > 1);
+      }
+      function clampPan() {
+        var mx = Math.max(0, (img.clientWidth * S - stage.clientWidth) / 2);
+        var my = Math.max(0, (img.clientHeight * S - stage.clientHeight) / 2);
+        X = Math.max(-mx, Math.min(mx, X));
+        Y = Math.max(-my, Math.min(my, Y));
+      }
+      function zoomTo(ns, px, py) {
+        ns = Math.max(1, Math.min(5, ns));
+        var r = stage.getBoundingClientRect();
+        var dx = px - (r.left + r.width / 2), dy = py - (r.top + r.height / 2);
+        X = dx - ns * (dx - X) / S;
+        Y = dy - ns * (dy - Y) / S;
+        S = ns;
+        if (S === 1) { X = 0; Y = 0; }
+        clampPan();
+        apply();
+      }
+      function show(i) {
+        idx = (i + items.length) % items.length;
+        S = 1; X = 0; Y = 0; apply();
+        img.src = items[idx].currentSrc || items[idx].src;
+        img.alt = items[idx].alt;
+        count.textContent = (idx + 1) + ' / ' + items.length;
+      }
+      function openAt(i) {
+        show(i);
+        if (!lb.open) { lb.showModal(); document.body.style.overflow = 'hidden'; }
+      }
+      function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+
+      // Open from any photo button (gallery or the top collage)
+      document.addEventListener('click', function (e) {
+        var b = e.target.closest('.g');
+        if (!b) return;
+        var im = b.querySelector('img');
+        var i = items.indexOf(im);
+        if (i < 0) {
+          var src = im.getAttribute('src');
+          i = items.findIndex(function (x) { return x.getAttribute('src') === src; });
+        }
+        if (i >= 0) openAt(i);
       });
 
-      grid.addEventListener('click', function (e) {
-        var btn = e.target.closest('.g');
-        if (!btn) return;
-        var img = btn.querySelector('img');
-        lbImg.src = img.currentSrc || img.src;
-        lbImg.alt = img.alt;
-        lb.showModal();
+      stage.addEventListener('pointerdown', function (e) {
+        stage.setPointerCapture(e.pointerId);
+        pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        if (pts.size === 1) {
+          drag = { x: e.clientX, y: e.clientY, X: X, Y: Y, onImg: e.target === img };
+          moved = false;
+        } else if (pts.size === 2) {
+          var a = Array.from(pts.values());
+          pinch = { d: dist(a[0], a[1]) || 1, s: S };
+          drag = null; moved = true;
+        }
       });
+      stage.addEventListener('pointermove', function (e) {
+        if (!pts.has(e.pointerId)) return;
+        pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        if (pts.size === 2 && pinch) {
+          var a = Array.from(pts.values());
+          zoomTo(pinch.s * dist(a[0], a[1]) / pinch.d, (a[0].x + a[1].x) / 2, (a[0].y + a[1].y) / 2);
+        } else if (drag) {
+          var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+          if (Math.abs(dx) > 6 || Math.abs(dy) > 6) moved = true;
+          if (S > 1) { X = drag.X + dx; Y = drag.Y + dy; clampPan(); apply(); }
+        }
+      });
+      function end(e) {
+        if (!pts.has(e.pointerId)) return;
+        pts.delete(e.pointerId);
+        if (pts.size < 2) pinch = null;
+        if (drag && pts.size === 0 && e.type === 'pointerup') {
+          var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+          if (!moved) {
+            if (drag.onImg) zoomTo(S > 1 ? 1 : 2.5, e.clientX, e.clientY);
+            else if (S === 1) lb.close();
+          } else if (S === 1 && Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+            show(idx + (dx < 0 ? 1 : -1));
+          }
+        }
+        if (pts.size === 0) drag = null;
+      }
+      stage.addEventListener('pointerup', end);
+      stage.addEventListener('pointercancel', end);
+      stage.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        zoomTo(S * (e.deltaY < 0 ? 1.2 : 1 / 1.2), e.clientX, e.clientY);
+      }, { passive: false });
 
-      lb.addEventListener('click', function () { lb.close(); });
+      lb.querySelector('.lb-close').addEventListener('click', function () { lb.close(); });
+      lb.querySelector('.lb-prev').addEventListener('click', function () { show(idx - 1); });
+      lb.querySelector('.lb-next').addEventListener('click', function () { show(idx + 1); });
+      lb.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') show(idx - 1);
+        if (e.key === 'ArrowRight') show(idx + 1);
+      });
+      lb.addEventListener('close', function () { document.body.style.overflow = ''; });
     })();
   </script>
   <script>
@@ -769,6 +964,7 @@
       var traces = document.querySelector('.hero .traces');
       var hero = document.querySelector('.hero');
       var ticking = false;
+      var gwraps = Array.prototype.slice.call(document.querySelectorAll('.g3d-wrap'));
 
       function clamp(v) { return Math.min(1, Math.max(0, v)); }
 
@@ -781,6 +977,12 @@
         var scale = mobile ? 0.7 + 0.2 * p : 1.05 - 0.05 * p;
         card.style.transform = 'rotateX(' + (20 * (1 - p)).toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
         head.style.transform = 'translateY(' + (-100 * p).toFixed(1) + 'px)';
+        for (var i = 0; i < gwraps.length; i++) {
+          var wr = gwraps[i].getBoundingClientRect();
+          var gp = reduce ? 1 : clamp((vh * 0.85 - wr.top) / (vh * 0.65));
+          var gs = mobile ? 0.88 + 0.12 * gp : 0.92 + 0.08 * gp;
+          gwraps[i].firstElementChild.style.transform = 'rotateX(' + (22 * (1 - gp)).toFixed(2) + 'deg) scale(' + gs.toFixed(3) + ')';
+        }
         if (!reduce && traces && hero.getBoundingClientRect().bottom > 0) {
           traces.style.transform = 'translateY(' + (window.scrollY * 0.12).toFixed(1) + 'px)';
         }
@@ -789,6 +991,17 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onScroll);
       update();
+
+      // Mobile menu
+      var menuBtn = document.getElementById('menu-btn');
+      var nav = document.getElementById('main-nav');
+      function setMenu(open) {
+        nav.classList.toggle('open', open);
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? 'मेन्यू बंद करें' : 'मेन्यू खोलें');
+      }
+      menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+      nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
 
       // Ticket tilt (mouse devices only)
       var ticket = document.querySelector('.ticket');
