@@ -410,6 +410,18 @@
     .btn-wa:hover { background: var(--wine-deep); }
     .sticky-btn.wa { background: var(--rose); color: var(--wine-deep); }
     .sticky-btn.call { background: var(--wine-deep); }
+    /* ---------- Photo loading states ---------- */
+    .g { background: linear-gradient(110deg, #D8CDD2 30%, #E9E0E4 50%, #D8CDD2 70%); background-size: 200% 100%; animation: shimmer 1.6s linear infinite; position: relative; }
+    .g.loaded { animation: none; }
+    .g img { opacity: 0; transition: opacity .45s ease, transform .3s ease; }
+    .g img.ok { opacity: 1; }
+    .g.failed { animation: none; }
+    .g.failed::after { content: "फोटो लोड नहीं हुई"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px; font-size: .82rem; color: var(--mute); }
+    @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+    .lb-img { transition: opacity .25s ease; }
+    .lb-load { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); margin: 0; padding: 0 20px; text-align: center; z-index: 1; color: #E8D3DB; pointer-events: none; }
+    .lb-load[hidden] { display: none; }
+    @media (prefers-reduced-motion: reduce) { .g { animation: none; } }
   </style>
 </head>
 <body>
@@ -525,11 +537,11 @@
         </div>
         <div class="s3d-card" id="s3d-card">
           <div class="s3d-screen">
-            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC03244_1.JPG" alt="कैंपस और लैब की झलक" loading="lazy"></button>
-            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC03416.JPG" alt="कैंपस फोटो" loading="lazy"></button>
-            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC_8117.JPG" alt="लैब फोटो" loading="lazy"></button>
-            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC_8118.webp" alt="लैब फोटो" loading="lazy"></button>
-            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img src="DSC_8124.JPG" alt="लैब फोटो" loading="lazy"></button>
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img data-src="DSC03244_1.JPG" alt="कैंपस और लैब की झलक" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img data-src="DSC03416.JPG" alt="कैंपस फोटो" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img data-src="DSC_8117.JPG" alt="लैब फोटो" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img data-src="DSC_8118.webp" alt="लैब फोटो" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो बड़ी करके देखें"><img data-src="DSC_8124.JPG" alt="लैब फोटो" decoding="async"></button>
           </div>
         </div>
       </div>
@@ -680,23 +692,23 @@
   <section id="gallery" class="band gal">
     <div class="wrap">
       <h2>कॉलेज कैंपस और लैब गैलरी</h2>
-      <p class="sec-lead">हमारे आधुनिक प्रैक्टिकल क्लासरूम की वास्तविक झलकियां (47 लाइव तस्वीरें)। किसी भी फोटो पर टैप करें — वो पूरी बड़ी खुलेगी और ज़ूम भी होगी।</p>
+      <p class="sec-lead">हमारे आधुनिक प्रैक्टिकल क्लासरूम की वास्तविक झलकियां (<span id="photo-count">47</span> तस्वीरें)। किसी भी फोटो पर टैप करें — वो पूरी बड़ी खुलेगी और ज़ूम भी होगी।</p>
       <div class="g3d-list">
         <div class="g3d-wrap">
           <div class="g3d-card">
             <div class="g3d-screen">
-            <button type="button" class="g" aria-label="फोटो 1 बड़ी करके देखें"><img src="DSC03244_1.JPG" alt="कैंपस और लैब फोटो 1" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 2 बड़ी करके देखें"><img src="DSC03245_1.JPG" alt="कैंपस और लैब फोटो 2" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 3 बड़ी करके देखें"><img src="DSC03246_1.JPG" alt="कैंपस और लैब फोटो 3" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 4 बड़ी करके देखें"><img src="DSC03247_1.JPG" alt="कैंपस और लैब फोटो 4" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 5 बड़ी करके देखें"><img src="DSC03248.JPG" alt="कैंपस और लैब फोटो 5" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 6 बड़ी करके देखें"><img src="DSC03249_1.JPG" alt="कैंपस और लैब फोटो 6" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 7 बड़ी करके देखें"><img src="DSC03250_1.JPG" alt="कैंपस और लैब फोटो 7" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 8 बड़ी करके देखें"><img src="DSC03363.JPG" alt="कैंपस और लैब फोटो 8" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 9 बड़ी करके देखें"><img src="DSC03363_1.JPG" alt="कैंपस और लैब फोटो 9" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 10 बड़ी करके देखें"><img src="DSC03364.JPG" alt="कैंपस और लैब फोटो 10" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 11 बड़ी करके देखें"><img src="DSC03367.JPG" alt="कैंपस और लैब फोटो 11" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 12 बड़ी करके देखें"><img src="DSC03368.JPG" alt="कैंपस और लैब फोटो 12" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 1 बड़ी करके देखें"><img data-src="DSC03244_1.JPG" alt="कैंपस और लैब फोटो 1" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 2 बड़ी करके देखें"><img data-src="DSC03245_1.JPG" alt="कैंपस और लैब फोटो 2" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 3 बड़ी करके देखें"><img data-src="DSC03246_1.JPG" alt="कैंपस और लैब फोटो 3" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 4 बड़ी करके देखें"><img data-src="DSC03247_1.JPG" alt="कैंपस और लैब फोटो 4" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 5 बड़ी करके देखें"><img data-src="DSC03248.JPG" alt="कैंपस और लैब फोटो 5" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 6 बड़ी करके देखें"><img data-src="DSC03249_1.JPG" alt="कैंपस और लैब फोटो 6" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 7 बड़ी करके देखें"><img data-src="DSC03250_1.JPG" alt="कैंपस और लैब फोटो 7" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 8 बड़ी करके देखें"><img data-src="DSC03363.JPG" alt="कैंपस और लैब फोटो 8" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 9 बड़ी करके देखें"><img data-src="DSC03363_1.JPG" alt="कैंपस और लैब फोटो 9" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 10 बड़ी करके देखें"><img data-src="DSC03364.JPG" alt="कैंपस और लैब फोटो 10" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 11 बड़ी करके देखें"><img data-src="DSC03367.JPG" alt="कैंपस और लैब फोटो 11" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 12 बड़ी करके देखें"><img data-src="DSC03368.JPG" alt="कैंपस और लैब फोटो 12" decoding="async"></button>
             </div>
           </div>
           <p class="g3d-cap">फोटो 1 से 12</p>
@@ -704,18 +716,18 @@
         <div class="g3d-wrap">
           <div class="g3d-card">
             <div class="g3d-screen">
-            <button type="button" class="g" aria-label="फोटो 13 बड़ी करके देखें"><img src="DSC03368_1.JPG" alt="कैंपस और लैब फोटो 13" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 14 बड़ी करके देखें"><img src="DSC03372.JPG" alt="कैंपस और लैब फोटो 14" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 15 बड़ी करके देखें"><img src="DSC03373.JPG" alt="कैंपस और लैब फोटो 15" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 16 बड़ी करके देखें"><img src="DSC03374.JPG" alt="कैंपस और लैब फोटो 16" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 17 बड़ी करके देखें"><img src="DSC03375.JPG" alt="कैंपस और लैब फोटो 17" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 18 बड़ी करके देखें"><img src="DSC03416.JPG" alt="कैंपस और लैब फोटो 18" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 19 बड़ी करके देखें"><img src="DSC03417.JPG" alt="कैंपस और लैब फोटो 19" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 20 बड़ी करके देखें"><img src="DSC03418.JPG" alt="कैंपस और लैब फोटो 20" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 21 बड़ी करके देखें"><img src="DSC03419.JPG" alt="कैंपस और लैब फोटो 21" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 22 बड़ी करके देखें"><img src="DSC03420.JPG" alt="कैंपस और लैब फोटो 22" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 23 बड़ी करके देखें"><img src="DSC03421.JPG" alt="कैंपस और लैब फोटो 23" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 24 बड़ी करके देखें"><img src="DSC03422.JPG" alt="कैंपस और लैब फोटो 24" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 13 बड़ी करके देखें"><img data-src="DSC03368_1.JPG" alt="कैंपस और लैब फोटो 13" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 14 बड़ी करके देखें"><img data-src="DSC03372.JPG" alt="कैंपस और लैब फोटो 14" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 15 बड़ी करके देखें"><img data-src="DSC03373.JPG" alt="कैंपस और लैब फोटो 15" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 16 बड़ी करके देखें"><img data-src="DSC03374.JPG" alt="कैंपस और लैब फोटो 16" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 17 बड़ी करके देखें"><img data-src="DSC03375.JPG" alt="कैंपस और लैब फोटो 17" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 18 बड़ी करके देखें"><img data-src="DSC03416.JPG" alt="कैंपस और लैब फोटो 18" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 19 बड़ी करके देखें"><img data-src="DSC03417.JPG" alt="कैंपस और लैब फोटो 19" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 20 बड़ी करके देखें"><img data-src="DSC03418.JPG" alt="कैंपस और लैब फोटो 20" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 21 बड़ी करके देखें"><img data-src="DSC03419.JPG" alt="कैंपस और लैब फोटो 21" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 22 बड़ी करके देखें"><img data-src="DSC03420.JPG" alt="कैंपस और लैब फोटो 22" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 23 बड़ी करके देखें"><img data-src="DSC03421.JPG" alt="कैंपस और लैब फोटो 23" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 24 बड़ी करके देखें"><img data-src="DSC03422.JPG" alt="कैंपस और लैब फोटो 24" decoding="async"></button>
             </div>
           </div>
           <p class="g3d-cap">फोटो 13 से 24</p>
@@ -723,18 +735,18 @@
         <div class="g3d-wrap">
           <div class="g3d-card">
             <div class="g3d-screen">
-            <button type="button" class="g" aria-label="फोटो 25 बड़ी करके देखें"><img src="DSC_8117.JPG" alt="कैंपस और लैब फोटो 25" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 26 बड़ी करके देखें"><img src="DSC_8118.webp" alt="कैंपस और लैब फोटो 26" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 27 बड़ी करके देखें"><img src="DSC_8119.webp" alt="कैंपस और लैब फोटो 27" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 28 बड़ी करके देखें"><img src="DSC_8120.webp" alt="कैंपस और लैब फोटो 28" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 29 बड़ी करके देखें"><img src="DSC_8121.webp" alt="कैंपस और लैब फोटो 29" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 30 बड़ी करके देखें"><img src="DSC_8123.JPG" alt="कैंपस और लैब फोटो 30" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 31 बड़ी करके देखें"><img src="DSC_8124.JPG" alt="कैंपस और लैब फोटो 31" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 32 बड़ी करके देखें"><img src="DSC_8125.JPG" alt="कैंपस और लैब फोटो 32" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 33 बड़ी करके देखें"><img src="DSC_8126.JPG" alt="कैंपस और लैब फोटो 33" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 34 बड़ी करके देखें"><img src="DSC_8127.webp" alt="कैंपस और लैब फोटो 34" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 35 बड़ी करके देखें"><img src="DSC_8128.webp" alt="कैंपस और लैब फोटो 35" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 36 बड़ी करके देखें"><img src="DSC_8129.webp" alt="कैंपस और लैब फोटो 36" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 25 बड़ी करके देखें"><img data-src="DSC_8117.JPG" alt="कैंपस और लैब फोटो 25" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 26 बड़ी करके देखें"><img data-src="DSC_8118.webp" alt="कैंपस और लैब फोटो 26" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 27 बड़ी करके देखें"><img data-src="DSC_8119.webp" alt="कैंपस और लैब फोटो 27" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 28 बड़ी करके देखें"><img data-src="DSC_8120.webp" alt="कैंपस और लैब फोटो 28" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 29 बड़ी करके देखें"><img data-src="DSC_8121.webp" alt="कैंपस और लैब फोटो 29" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 30 बड़ी करके देखें"><img data-src="DSC_8123.JPG" alt="कैंपस और लैब फोटो 30" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 31 बड़ी करके देखें"><img data-src="DSC_8124.JPG" alt="कैंपस और लैब फोटो 31" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 32 बड़ी करके देखें"><img data-src="DSC_8125.JPG" alt="कैंपस और लैब फोटो 32" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 33 बड़ी करके देखें"><img data-src="DSC_8126.JPG" alt="कैंपस और लैब फोटो 33" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 34 बड़ी करके देखें"><img data-src="DSC_8127.webp" alt="कैंपस और लैब फोटो 34" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 35 बड़ी करके देखें"><img data-src="DSC_8128.webp" alt="कैंपस और लैब फोटो 35" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 36 बड़ी करके देखें"><img data-src="DSC_8129.webp" alt="कैंपस और लैब फोटो 36" decoding="async"></button>
             </div>
           </div>
           <p class="g3d-cap">फोटो 25 से 36</p>
@@ -742,17 +754,17 @@
         <div class="g3d-wrap">
           <div class="g3d-card">
             <div class="g3d-screen">
-            <button type="button" class="g" aria-label="फोटो 37 बड़ी करके देखें"><img src="DSC_8130.JPG" alt="कैंपस और लैब फोटो 37" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 38 बड़ी करके देखें"><img src="DSC_8131.webp" alt="कैंपस और लैब फोटो 38" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 39 बड़ी करके देखें"><img src="DSC_8132.webp" alt="कैंपस और लैब फोटो 39" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 40 बड़ी करके देखें"><img src="DSC_8133.webp" alt="कैंपस और लैब फोटो 40" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 41 बड़ी करके देखें"><img src="DSC_8134.webp" alt="कैंपस और लैब फोटो 41" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 42 बड़ी करके देखें"><img src="DSC_8135.webp" alt="कैंपस और लैब फोटो 42" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 43 बड़ी करके देखें"><img src="DSC_8138.webp" alt="कैंपस और लैब फोटो 43" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 44 बड़ी करके देखें"><img src="DSC_8139.webp" alt="कैंपस और लैब फोटो 44" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 45 बड़ी करके देखें"><img src="DSC_8140.webp" alt="कैंपस और लैब फोटो 45" loading="lazy" decoding="async"></button>
-            <button type="button" class="g" aria-label="फोटो 46 बड़ी करके देखें"><img src="DSC_8141.webp" alt="कैंपस और लैब फोटो 46" loading="lazy" decoding="async"></button>
-            <button type="button" class="g wide" aria-label="फोटो 47 बड़ी करके देखें"><img src="DSC_8142.webp" alt="कैंपस और लैब फोटो 47" loading="lazy" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 37 बड़ी करके देखें"><img data-src="DSC_8130.JPG" alt="कैंपस और लैब फोटो 37" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 38 बड़ी करके देखें"><img data-src="DSC_8131.webp" alt="कैंपस और लैब फोटो 38" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 39 बड़ी करके देखें"><img data-src="DSC_8132.webp" alt="कैंपस और लैब फोटो 39" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 40 बड़ी करके देखें"><img data-src="DSC_8133.webp" alt="कैंपस और लैब फोटो 40" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 41 बड़ी करके देखें"><img data-src="DSC_8134.webp" alt="कैंपस और लैब फोटो 41" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 42 बड़ी करके देखें"><img data-src="DSC_8135.webp" alt="कैंपस और लैब फोटो 42" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 43 बड़ी करके देखें"><img data-src="DSC_8138.webp" alt="कैंपस और लैब फोटो 43" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 44 बड़ी करके देखें"><img data-src="DSC_8139.webp" alt="कैंपस और लैब फोटो 44" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 45 बड़ी करके देखें"><img data-src="DSC_8140.webp" alt="कैंपस और लैब फोटो 45" decoding="async"></button>
+            <button type="button" class="g" aria-label="फोटो 46 बड़ी करके देखें"><img data-src="DSC_8141.webp" alt="कैंपस और लैब फोटो 46" decoding="async"></button>
+            <button type="button" class="g wide" aria-label="फोटो 47 बड़ी करके देखें"><img data-src="DSC_8142.webp" alt="कैंपस और लैब फोटो 47" decoding="async"></button>
             </div>
           </div>
           <p class="g3d-cap">फोटो 37 से 47</p>
@@ -769,6 +781,7 @@
     </div>
     <button type="button" class="lb-nav lb-prev" aria-label="पिछली फोटो">&#8249;</button>
     <button type="button" class="lb-nav lb-next" aria-label="अगली फोटो">&#8250;</button>
+    <p class="lb-load" hidden>फोटो लोड हो रही है…</p>
     <p class="lb-hint">टैप करके ज़ूम करें · उंगली से खिसकाकर देखें · दो उंगलियों से भी बड़ा करें</p>
   </dialog>
 
@@ -848,7 +861,9 @@
       var stage = lb.querySelector('.lb-stage');
       var img = lb.querySelector('.lb-img');
       var count = lb.querySelector('.lb-count');
-      var items = Array.prototype.slice.call(document.querySelectorAll('#gallery .g img'));
+      var lbLoad = lb.querySelector('.lb-load');
+      var items = [];
+      function refresh() { items = Array.prototype.slice.call(document.querySelectorAll('#gallery .g img')); }
       var idx = 0, S = 1, X = 0, Y = 0;
       var pts = new Map(), pinch = null, drag = null, moved = false;
 
@@ -876,7 +891,12 @@
       function show(i) {
         idx = (i + items.length) % items.length;
         S = 1; X = 0; Y = 0; apply();
-        img.src = items[idx].currentSrc || items[idx].src;
+        lbLoad.hidden = false;
+        lbLoad.textContent = 'फोटो लोड हो रही है…';
+        img.style.opacity = '0';
+        img.onload = function () { img.style.opacity = ''; lbLoad.hidden = true; };
+        img.onerror = function () { lbLoad.textContent = 'फोटो लोड नहीं हो पाई — नेट चेक करके दोबारा खोलें'; };
+        img.src = items[idx].getAttribute('data-src');
         img.alt = items[idx].alt;
         count.textContent = (idx + 1) + ' / ' + items.length;
       }
@@ -890,11 +910,12 @@
       document.addEventListener('click', function (e) {
         var b = e.target.closest('.g');
         if (!b) return;
+        refresh();
         var im = b.querySelector('img');
         var i = items.indexOf(im);
         if (i < 0) {
-          var src = im.getAttribute('src');
-          i = items.findIndex(function (x) { return x.getAttribute('src') === src; });
+          var src = im.getAttribute('data-src');
+          i = items.findIndex(function (x) { return x.getAttribute('data-src') === src; });
         }
         if (i >= 0) openAt(i);
       });
@@ -1013,6 +1034,52 @@
           ticket.style.transform = 'perspective(900px) rotateY(' + (x * 10).toFixed(2) + 'deg) rotateX(' + (-y * 10).toFixed(2) + 'deg)';
         });
         ticket.addEventListener('pointerleave', function () { ticket.style.transform = ''; });
+      }
+    })();
+  </script>
+  <script>
+    // Loads photos a few at a time (big originals + slow net = failures when all start together)
+    (function () {
+      var MAX = 3, active = 0, queue = [];
+      var imgs = Array.prototype.slice.call(document.querySelectorAll('img[data-src]'));
+
+      function pump() {
+        while (active < MAX && queue.length) start(queue.shift());
+      }
+      function enqueue(img, attempt) { queue.push({ img: img, attempt: attempt }); pump(); }
+
+      function start(job) {
+        var img = job.img, attempt = job.attempt, settled = false;
+        active++;
+        function settle() { if (settled) return false; settled = true; active--; return true; }
+        img.onload = function () {
+          if (!settle()) return;
+          img.classList.add('ok');
+          img.parentNode.classList.add('loaded');
+          pump();
+        };
+        img.onerror = function () {
+          if (!settle()) return;
+          if (attempt < 2) {
+            setTimeout(function () { enqueue(img, attempt + 1); }, 1500);
+          } else {
+            img.parentNode.classList.add('failed');
+          }
+          pump();
+        };
+        var src = img.getAttribute('data-src');
+        img.src = attempt ? src + '?r=' + attempt : src;
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { io.unobserve(e.target); enqueue(e.target, 0); }
+          });
+        }, { rootMargin: '700px 0px' });
+        imgs.forEach(function (im) { io.observe(im); });
+      } else {
+        imgs.forEach(function (im) { enqueue(im, 0); });
       }
     })();
   </script>
